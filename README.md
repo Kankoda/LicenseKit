@@ -17,11 +17,11 @@
 
 ## About LicenseKit
 
-LicenseKit helps you protect your closed-source `Swift` libraries behind a commercial license.
+LicenseKit helps you protect your Swift-based apps and libraries with a commercial license. With LicenseKit, you can require that users register a valid license key before they can start using your products or certain features within. 
 
-With LicenseKit, you can require a license key before developers can start using your libraries.
+LicenseKit lets you specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier etc. for each license and validate the current license whenever you want.
 
-LicenseKit supports standard and custom license models. This means that a LicenseKit license can specify things like expiration date, valid bundle IDs etc. but also domain-specific features.
+LicenseKit requires a commercial license. You can obtain a license from the [LicenseKit website][Licenses].
 
 
 
@@ -34,7 +34,7 @@ LicenseKit supports the following platforms:
 * tvOS 13.0
 * watchOS 6.0
 
-This means that you can distribute your closed-source licensed to all major Apple platforms.
+This means that you can use LicenseKit to protect your software on all major Apple platforms.
 
 
 
@@ -46,7 +46,7 @@ The best way to install LicenseKit is with the Swift Package Manager.
 https://github.com/danielsaidi/LicenseKit.git
 ```
 
-LicenseKit must also be added to any application that uses your library.
+If you are building an app, LicenseKit only has to be added to the app target. If you are building a library, make sure to setup SPM so that your users adds both your library and LicenseKit.
 
 
 
@@ -60,15 +60,21 @@ Once LicenseKit is added to your project, you need to obtain a license before yo
 
 ## Documentation
 
-The LicenseKit documentation contains extensive information, code examples etc. and makes it easy to overview the various parts of the library.
+The LicenseKit documentation contains extensive information, code examples etc.
 
-You can either [download][Documentation] the documentation or build it directly in Xcode, using `Product/Build Documentation`.
+You can [download][Documentation] the documentation and open it with Xcode.
+
+
+
+## Demo app
+
+This repository contains a demo package and a demo app that demonstrates how to use LicenseKit.
 
 
 
 ## Contact
 
-Feel free to reach out if you have questions or if you want to contribute in any way:
+Feel free to reach out if you have any questions or need help any way:
 
 * E-mail: [daniel.saidi@gmail.com][Email]
 * Twitter: [@danielsaidi][Twitter]
@@ -85,7 +91,7 @@ LicenseKit is closed source. See the [LICENSE][License] file for more info.
 [Email]: mailto:daniel.saidi@gmail.com
 [Twitter]: http://www.twitter.com/danielsaidi
 [Website]: https://getlicensekit.com
-[Licenses]: https://getlicensekit.com/pro
+[Licenses]: https://getlicensekit.com/licenses
 
 [Documentation]: https://github.com/danielsaidi/Documentation/blob/main/Docs/LicenseKit.doccarchive.zip?raw=true
 [License]: https://github.com/danielsaidi/LicenseKit/blob/master/LICENSE
