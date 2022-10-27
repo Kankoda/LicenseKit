@@ -15,13 +15,19 @@ struct DemoApp: App {
 
     @StateObject
     private var context = DemoLicenseContext()
-    
+
+    // The app's license key is specified within LicenseKit.
+    private let appLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
+
+    // Use this to set how the demo package should register licenses.
+    private let packageLicenseRegistrationMethod = LicenseRegistrationMethod.local
+
     var body: some Scene {
         WindowGroup {
             HomeScreen()
                 .environmentObject(context)
                 .onAppear(perform: tryRegisterDemoPackageLicense)
-                .onAppear(perform: setupAppLicense)
+                .onAppear(perform: tryRegisterAppLicense)
         }
     }
 }
@@ -31,58 +37,62 @@ private extension DemoApp {
     /**
      Try to register a DemoPackage license, so that this app
      can use features from DemoPackage.
+
+     This license key would have been provided as this app's
+     company or developer signed up for a LicenseKit license.
+
+     If the package setup succeeds, we get a license that we
+     present in the app, to verify that we have successfully
+     registered a license. Never show your license like this
+     in a real app or library!
+
+     If the package setup fails, the setup function throws a
+     license error that we update the context with.
      */
     func tryRegisterDemoPackageLicense() {
-        
-        // This key would have been provided to the app team
-        // by the package creator as the license was created.
         let key = "6A34BED3-5A7F-44B9-A3C6-3415463C4D0B"
-        
         Task {
             do {
-                // If this license validation succeeds, we get a
-                // license back, that we then present in the app.
-                let license = try await DemoPackageLicense.registerLicenseKey(key)
+                let license = try await DemoPackage.setup(
+                    withLicenseKey: key,
+                    method: packageLicenseRegistrationMethod)
                 updateContext(with: license)
             } catch {
-                // If we arrive here (try replacing the key with
-                // an invalid one, change the bundle id etc.) we
-                // failed to register a package license and will
-                // get an error that describes what went wrong.
                 updateContext(with: error as? LicenseError)
             }
         }
     }
     
     /**
-     Setup application-specific licenses, which the user can
-     register in the app, using a license key.
-     
-     This key would have been provided to the app developers
-     by LicenseKit as the app LicenseKit license was created.
-     For now, this demo app uses the same license key as the
-     demo package.
+     Try to register an app-specific license engine, using a
+     LicenseKit license that is only valid for this app.
+
+     This license key would have been provided as this app's
+     company or developer signed up for a LicenseKit license.
+
+     This function tries to use this license key to create a
+     license engine, that for now only contains a hard-coded
+     license. This license key can be used within the app to
+     register a user license, which in a real world scenario
+     would have been provided to users as they signed up for
+     an app license.
      */
-    func setupAppLicense() {
-        
-        // This key would have been provided to the app team
-        // by LicenseKit as the license was created.
-        let key = "299B33C6-061C-4285-8189-90525BCAF098"
-        
-        // Create an app-specific license. If you would have
-        // an app that used LicenseKit, it should create its
-        // licenses in the same way.
-        let appLicense = License(
-            licenseKey: "4B142177-214B-447F-9E57-8E906DE6FCFC",
-            customer: LicenseCustomer(name: "Demo app user"),
-            expirationDate: Date().addingTimeInterval(3600),
-            isExpirationFatal: true,
-            platforms: [.iOS])
-        
-        // Create the app-specific license application, then
-        // add app-specific licenses to it.
-        let engine = try? LicenseEngine(licenseKey: key, type: .local(licenses: [appLicense]))
-        context.licenseEngine = engine
+    func tryRegisterAppLicense() {
+        context.licenseEngine = try? LicenseEngine(licenseKey: appLicenseKey) { license in
+            try LocalLicenseRegistrationService(
+                license: license,
+                licenses: [
+                    License(
+                        licenseKey: "4B142177-214B-447F-9E57-8E906DE6FCFC",
+                        customer: LicenseCustomer(name: "Demo app user"),
+                        tier: .gold,
+                        expirationDate: Date().addingTimeInterval(3600),
+                        allowsExpiration: false,
+                        platforms: [.iOS],
+                        additionalInfo: ["registration-method" : LicenseRegistrationMethod.local.rawValue])
+                ]
+            )
+        }
     }
 }
 

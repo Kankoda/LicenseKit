@@ -18,9 +18,10 @@ struct LicenseScreen: View {
             Section(header: Text("License")) {
                 InfoListItem(title: "License key", text: license.licenseKey)
                 InfoListItem(title: "License tier", text: "\(license.tier.name) (level \(license.tier.level))")
-                InfoListItem(title: "Expiration date", text: license.expirationDate.formatted(date: .long, time: .shortened))
+                InfoListItem(title: "Expiration date", text: license.expirationDate?.formatted(date: .long, time: .shortened) ?? "-")
                 InfoListItem(title: "Platforms", text: license.platforms.map { $0.id }.joined(separator: ", "))
                 InfoListItem(title: "Bundle IDs", text: bundleIdsText)
+                InfoListItem(title: "Registration method", text: license.additionalInfo["registration-method"] ?? "")
             }
             Section(header: Text("Customer")) {
                 InfoListItem(title: "Name", text: license.customer?.name ?? "-")

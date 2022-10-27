@@ -29,7 +29,7 @@ struct HomeScreen: View {
     private let demoPackageFeature: DemoPackageFeature?
     
     @State
-    private var appLicenseKey = ""
+    private var appLicenseKey = "4B142177-214B-447F-9E57-8E906DE6FCFC"
     
     @EnvironmentObject
     private var context: DemoLicenseContext
@@ -50,51 +50,56 @@ struct HomeScreen: View {
 private extension HomeScreen {
     
     var appLicenseSection: some View {
-        Section(header: Text("App License"), footer: Text("This license is defined by the demo app. You can register a license key to unlock this app.")) {
-            StatusListItem(status: hasAppLicense, title: "Has valid app license")
-            if let license = context.appLicense {
-                LicenseLink(license: license)
+        Group {
+            Section(header: Text("App License"), footer: Text("This license key is defined by the app as it launches. Register it to unlock the app.")) {
+                appLicenseKeyTextField
+                StatusListItem(status: hasAppLicense, title: "Has valid app license")
+                if let license = context.appLicense {
+                    LicenseLink(license: license)
+                }
             }
-            appLicenseKeyTextField
-            appLicenseKeyCopyButton
-            if let error = context.appLicenseError {
-                Text("Error: \(error.localizedDescription)")
+
+            Section(footer: text(for: context.appLicenseError)) {
+                appLicenseRegisterButton
             }
         }
     }
     
     var packageLicenseSection: some View {
-        Section(header: Text("Demo Package License"), footer: Text("This license is defined by the demo package. The license key is registered by the app as it launches.")) {
+        Section(header: Text("Demo Package License"), footer: Text("This license is setup by the demo package. The app registers this key as it launches.")) {
             StatusListItem(status: hasDemoPackageLicense, title: "Has valid package license")
-            StatusListItem(status: hasDemoPackageFeature, title: "Could create license feature")
+            StatusListItem(status: hasDemoPackageFeature, title: "Can access package feature")
             if let license = context.demoPackageLicense {
                 LicenseLink(license: license)
             }
-            if let error = context.demoPackageLicenseError {
-                Text("Error: \(error.localizedDescription)")
-            }
+            text(for: context.demoPackageLicenseError)
         }
     }
 }
 
 private extension HomeScreen {
     
-    var appLicenseKeyCopyButton: some View {
-        Button(action: copyAppLicenseKey) {
-            Label {
-                Text("Copy app license key to text field")
-            } icon: {
-                Image(systemName: "doc.on.clipboard")
-            }
-        }.buttonStyle(.plain)
+    var appLicenseRegisterButton: some View {
+        Button(action: registerAppLicenseKey) {
+            Text("Register app license key")
+                .frame(maxWidth: .infinity)
+        }
+        .controlSize(.large)
+        .buttonStyle(.borderedProminent)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.clear)
     }
     
     var appLicenseKeyTextField: some View {
-        HStack {
-            TextField("Enter app license key", text: $appLicenseKey)
-            Button(action: registerAppLicenseKey) {
-                Text("Register")
-            }
+        TextField("Enter app license key", text: $appLicenseKey)
+    }
+
+    @ViewBuilder
+    func text(for error: LicenseError?) -> some View {
+        if let error = error {
+            Text("ERROR: \(error.displayName)")
+                .frame(maxWidth: .infinity)
+                .padding()
         }
     }
 }
@@ -115,10 +120,6 @@ private extension HomeScreen {
 }
 
 private extension HomeScreen {
-    
-    func copyAppLicenseKey() {
-        appLicenseKey = "4B142177-214B-447F-9E57-8E906DE6FCFC"
-    }
     
     func registerAppLicenseKey() {
         Task {

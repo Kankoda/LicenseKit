@@ -12,12 +12,12 @@
 		A954FE0A27B64722003F7180 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A954FE0927B64722003F7180 /* Preview Assets.xcassets */; };
 		A95DFBCC27B6AE9A005580F2 /* DemoPackage in Frameworks */ = {isa = PBXBuildFile; productRef = A95DFBCB27B6AE9A005580F2 /* DemoPackage */; };
 		A95DFBCE27B6AEBA005580F2 /* DemoLicenseContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBCD27B6AEBA005580F2 /* DemoLicenseContext.swift */; };
-		A95DFBD127B6AFCB005580F2 /* LicenseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A95DFBD027B6AFCB005580F2 /* LicenseKit */; };
 		A95DFBD727B80FB8005580F2 /* LicenseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBD627B80FB8005580F2 /* LicenseScreen.swift */; };
 		A95DFBDB27B81064005580F2 /* StatusListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBDA27B81064005580F2 /* StatusListItem.swift */; };
 		A95DFBDD27B81118005580F2 /* InfoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBDC27B81118005580F2 /* InfoListItem.swift */; };
 		A95DFBDF27B8128B005580F2 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBDE27B8128B005580F2 /* HomeScreen.swift */; };
 		A95DFBE327B81474005580F2 /* LicenseLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBE227B81474005580F2 /* LicenseLink.swift */; };
+		A95E044D290B2D9D003B6297 /* LicenseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A95E044C290B2D9D003B6297 /* LicenseKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,12 +28,12 @@
 		A954FE1227B64744003F7180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A95DFBCA27B6AE7A005580F2 /* DemoPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DemoPackage; sourceTree = "<group>"; };
 		A95DFBCD27B6AEBA005580F2 /* DemoLicenseContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLicenseContext.swift; sourceTree = "<group>"; };
-		A95DFBCF27B6AFA6005580F2 /* LicenseKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LicenseKit; path = ..; sourceTree = "<group>"; };
 		A95DFBD627B80FB8005580F2 /* LicenseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseScreen.swift; sourceTree = "<group>"; };
 		A95DFBDA27B81064005580F2 /* StatusListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListItem.swift; sourceTree = "<group>"; };
 		A95DFBDC27B81118005580F2 /* InfoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListItem.swift; sourceTree = "<group>"; };
 		A95DFBDE27B8128B005580F2 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		A95DFBE227B81474005580F2 /* LicenseLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseLink.swift; sourceTree = "<group>"; };
+		A95E044B290B2D56003B6297 /* licensekitsource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = licensekitsource; path = ../../licensekitsource; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95DFBCC27B6AE9A005580F2 /* DemoPackage in Frameworks */,
-				A95DFBD127B6AFCB005580F2 /* LicenseKit in Frameworks */,
+				A95E044D290B2D9D003B6297 /* LicenseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A95DFBCA27B6AE7A005580F2 /* DemoPackage */,
-				A95DFBCF27B6AFA6005580F2 /* LicenseKit */,
+				A95E044B290B2D56003B6297 /* licensekitsource */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 			name = Demo;
 			packageProductDependencies = (
 				A95DFBCB27B6AE9A005580F2 /* DemoPackage */,
-				A95DFBD027B6AFCB005580F2 /* LicenseKit */,
+				A95E044C290B2D9D003B6297 /* LicenseKit */,
 			);
 			productName = Demo;
 			productReference = A954FDFF27B64722003F7180 /* Demo.app */;
@@ -338,6 +338,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -369,6 +370,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,7 +412,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DemoPackage;
 		};
-		A95DFBD027B6AFCB005580F2 /* LicenseKit */ = {
+		A95E044C290B2D9D003B6297 /* LicenseKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LicenseKit;
 		};

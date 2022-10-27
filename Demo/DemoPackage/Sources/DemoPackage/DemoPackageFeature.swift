@@ -18,18 +18,9 @@ import Foundation
 public class DemoPackageFeature {
     
     /**
-     Create a feature instance.
+     Create an instance of the demo feature.
      */
     public init() throws {
-        try DemoPackageLicense.validate()
-        self.isValidLicenseRegistered = true
+        try DemoPackage.validateCustomerLicense()
     }
-    
-    /**
-     The only thing that this feature does is to have a bool
-     that tells if a valid license has been registered. This
-     is however required to be able to create an instance of
-     this class, so it's just for extra clarification.
-     */
-    public let isValidLicenseRegistered: Bool
 }
