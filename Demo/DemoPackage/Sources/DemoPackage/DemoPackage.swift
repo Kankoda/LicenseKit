@@ -80,6 +80,8 @@ private extension DemoPackage {
             return try LocalLicenseRegistrationService.demoService(for: license)
         case .remote:
             return try RemoteLicenseRegistrationService<FakeNetworkResponse>.demoService(for: license)
+        default:
+            fatalError("Unhandled method")
         }
     }
 }

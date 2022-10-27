@@ -17,7 +17,7 @@
 		A95DFBDD27B81118005580F2 /* InfoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBDC27B81118005580F2 /* InfoListItem.swift */; };
 		A95DFBDF27B8128B005580F2 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBDE27B8128B005580F2 /* HomeScreen.swift */; };
 		A95DFBE327B81474005580F2 /* LicenseLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95DFBE227B81474005580F2 /* LicenseLink.swift */; };
-		A95E044D290B2D9D003B6297 /* LicenseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A95E044C290B2D9D003B6297 /* LicenseKit */; };
+		A95E0489290B449A003B6297 /* LicenseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A95E0488290B449A003B6297 /* LicenseKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,6 @@
 		A95DFBDC27B81118005580F2 /* InfoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListItem.swift; sourceTree = "<group>"; };
 		A95DFBDE27B8128B005580F2 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		A95DFBE227B81474005580F2 /* LicenseLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseLink.swift; sourceTree = "<group>"; };
-		A95E044B290B2D56003B6297 /* licensekitsource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = licensekitsource; path = ../../licensekitsource; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95DFBCC27B6AE9A005580F2 /* DemoPackage in Frameworks */,
-				A95E044D290B2D9D003B6297 /* LicenseKit in Frameworks */,
+				A95E0489290B449A003B6297 /* LicenseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				A95DFBCA27B6AE7A005580F2 /* DemoPackage */,
-				A95E044B290B2D56003B6297 /* licensekitsource */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -134,7 +132,7 @@
 			name = Demo;
 			packageProductDependencies = (
 				A95DFBCB27B6AE9A005580F2 /* DemoPackage */,
-				A95E044C290B2D9D003B6297 /* LicenseKit */,
+				A95E0488290B449A003B6297 /* LicenseKit */,
 			);
 			productName = Demo;
 			productReference = A954FDFF27B64722003F7180 /* Demo.app */;
@@ -165,6 +163,9 @@
 				Base,
 			);
 			mainGroup = A954FDF627B64722003F7180;
+			packageReferences = (
+				A95E0487290B449A003B6297 /* XCRemoteSwiftPackageReference "LicenseKit" */,
+			);
 			productRefGroup = A954FE0027B64722003F7180 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -407,13 +408,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A95E0487290B449A003B6297 /* XCRemoteSwiftPackageReference "LicenseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LicenseKit/LicenseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		A95DFBCB27B6AE9A005580F2 /* DemoPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DemoPackage;
 		};
-		A95E044C290B2D9D003B6297 /* LicenseKit */ = {
+		A95E0488290B449A003B6297 /* LicenseKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = A95E0487290B449A003B6297 /* XCRemoteSwiftPackageReference "LicenseKit" */;
 			productName = LicenseKit;
 		};
 /* End XCSwiftPackageProductDependency section */
