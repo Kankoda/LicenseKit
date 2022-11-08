@@ -17,16 +17,29 @@ versions that are not listed here.
 
 
 
+## 0.3
+
+This version adds a FREE tier that you can use with any app or library. Just use "FREE" as license key when creating a license engine, and you will get a `trial` tier license.
+
+This version also renames "license registration service" to "license service" and `registerLicenseKey` to `getLicense`.
+
+### ✨ Features
+
+* `LicenseServiceProxy` is a new license service that can handle multiple service instances.
+* `LicenseTier.trial` is a new license tier that you can use for trial licenses.
+
+
+
 ## 0.2
 
 This version adjusts the library quite a bit and adds a lot of additional functionality to it.
 
 ### ✨ Features
 
-* `LicenseRegistrationService` is a new protocol that defines services that can be used to register license keys.
-* `LocalLicenseRegistrationService` is a local registration service that uses hard-coded licenses.
-* `CsvLicenseRegistrationService` is a file-based registration service that uses licenses from CSV files.
-* `RemoteLicenseRegistrationService` is a api-based registration service that uses licenses from remote api:s.
+* `LicenseService` is a new protocol that defines services that can be used to handle licenses.
+* `LocalLicenseService` is a local registration service that uses hard-coded licenses.
+* `CsvLicenseService` is a file-based registration service that uses licenses from CSV files.
+* `RemoteLicenseService` is a api-based registration service that uses licenses from remote api:s.
 
 ### 💡 Behavior changes
 

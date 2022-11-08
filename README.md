@@ -15,17 +15,17 @@
 
 ## About LicenseKit
 
-LicenseKit helps you protect your Swift-based apps and libraries with a commercial license.  
+LicenseKit helps you protect your Swift-based apps and libraries with a commercial license.
 
-LicenseKit lets you specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier etc. for each license and validate the current license whenever you want.
+LicenseKit lets you specify your licenses in code, files or fetch them from an external api. Licenses can specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier, features etc.
 
-LicenseKit requires a commercial license. You can obtain a license from the [LicenseKit website][Website].
+LicenseKit requires a commercial license to be used. You can obtain a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a capped number of licenses. 
 
 
 
 ## Supported Platforms
 
-LicenseKit supports `iOS 13`, `macOS 11`, `tvOS 13` and `watchOS 6`.
+LicenseKit supports `iOS 13`, `macOS 12`, `tvOS 13` and `watchOS 6`.
 
 This means that you can use LicenseKit to protect your software on all major Apple platforms.
 
@@ -39,13 +39,53 @@ LicenseKit can be installed with the Swift Package Manager:
 https://github.com/LicenseKit/LicenseKit.git
 ```
 
-LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to setup SPM so that your users get both your library and LicenseKit.
+LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up SPM so that your users get both your library and LicenseKit.
 
 
 
 ## Getting started
 
-The online documentation has a [getting-started guide][Getting-Started] that will help you get started with the library.
+The online documentation has a [getting-started guide][Getting-Started] that will help you get started with LicenseKit.
+
+Basically, you first create a `LicenseEngine` with your(!) LicenceKit license key:
+
+```swift
+let engine = try LicenseEngine(licenseKey: "...") { license in
+    LocalLicenseRegistrationService(
+        license: license,
+        licenses: [
+            License(licenseKey: "license-key-1"),
+            License(licenseKey: "license-key-2")
+        ]
+    )
+}
+```
+
+If the license key is valid, the license engine will be created with the service you define in the service builder.
+
+Once you have a license engine, you can use it to register license keys that you can sell or provide to your app and library users:
+
+```swift
+let license = try await engine.registerLicenseKey("...")
+```
+
+Licenses can specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier, features etc.
+
+
+
+## Free license
+
+There's a FREE license that you can use to try out LicenseKit with a capped number of licenses.
+
+To use LicenseKit with the FREE license, just use `FREE` as license key when creating a license engine instance:
+
+```
+let engine = try LicenseEngine(licenseKey: "FREE") { license in
+    ...
+}
+```
+
+The FREE tier is capped to `10` licenses, using a `LocalLicenseRegistrationService` or `CsvLicenseRegistrationService`.  
 
 
 
