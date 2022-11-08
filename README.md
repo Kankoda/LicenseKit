@@ -47,11 +47,11 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 The online documentation has a [getting-started guide][Getting-Started] that will help you get started with LicenseKit.
 
-Basically, you first create a `LicenseEngine` with your(!) LicenceKit license key:
+Basically, you should first create a `LicenseEngine` with your(!) LicenceKit license key:
 
 ```swift
 let engine = try LicenseEngine(licenseKey: "...") { license in
-    LocalLicenseRegistrationService(
+    LocalLicenseService(
         license: license,
         licenses: [
             License(licenseKey: "license-key-1"),
@@ -61,23 +61,44 @@ let engine = try LicenseEngine(licenseKey: "...") { license in
 }
 ```
 
-If the license key is valid, the license engine will be created with the service you define in the service builder.
+If the license key is valid and refers to a valid license, the license engine will be created with the service you define in the service builder. If not, a ``LicenseError`` is thrown.
 
-Once you have a license engine, you can use it to register license keys that you can sell or provide to your app and library users:
+Once you have a license engine, you can use it to handle licenses:
 
 ```swift
-let license = try await engine.registerLicenseKey("...")
+let license = try await engine.getLicense(for: "license key")
 ```
 
-Licenses can specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier, features etc.
+Just like when creating a license engine, the license will be returned if the license key is valid and refers to a valid license, otherwise a ``LicenseError`` is thrown. 
+
+Licenses can specify expiration date, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, tier, features etc. 
+
+You can use licenses to protect functionality within your app or library. For instance, this class requires a ``LicenseTier/gold`` tier license:
+
+```swift
+public class MyVerySpecialClass {
+
+    public init() throws {
+        let requiredTier = LicenseTier.gold
+        if license.tier.level < requiredTier.level {
+            throw LicenseError.higherLicenseTierRequired(requiredTier)
+        }
+        ...
+    }
+
+    ...
+}
+```
+
+This makes it impossible to create instances without a valid license, since the initializer will throw an error if the license is invalid.
 
 
 
 ## Free license
 
-There's a FREE license that you can use to try out LicenseKit with a capped number of licenses.
+There's a free trial license that you can use to try out LicenseKit with a capped number of licenses.
 
-To use LicenseKit with the FREE license, just use `FREE` as license key when creating a license engine instance:
+To use LicenseKit with this license, just use `FREE` as license key when creating a license engine instance:
 
 ```
 let engine = try LicenseEngine(licenseKey: "FREE") { license in
@@ -85,7 +106,7 @@ let engine = try LicenseEngine(licenseKey: "FREE") { license in
 }
 ```
 
-The FREE tier is capped to `10` licenses, using a `LocalLicenseRegistrationService` or `CsvLicenseRegistrationService`.  
+This lets you use `LocalLicenseService` or `CsvLicenseService` with up to `10` licenses.  
 
 
 
