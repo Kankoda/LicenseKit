@@ -20,7 +20,7 @@ struct DemoApp: App {
     private let appLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
 
     // Use this to set how the demo package should register licenses.
-    private let packageLicenseRegistrationMethod = "local"
+    private let packageLicenseSource = LicenseSource.local
 
     var body: some Scene {
         WindowGroup {
@@ -55,7 +55,7 @@ private extension DemoApp {
             do {
                 let license = try await DemoPackage.setup(
                     withLicenseKey: key,
-                    method: packageLicenseRegistrationMethod)
+                    source: packageLicenseSource)
                 updateContext(with: license)
             } catch {
                 updateContext(with: error as? LicenseError)
@@ -89,7 +89,9 @@ private extension DemoApp {
                         expirationDate: Date().addingTimeInterval(3600),
                         allowsExpiration: false,
                         platforms: [.iOS],
-                        additionalInfo: ["registration-method" : "local"])
+                        additionalInfo: [
+                            "source" : packageLicenseSource.id
+                        ])
                 ]
             )
         }

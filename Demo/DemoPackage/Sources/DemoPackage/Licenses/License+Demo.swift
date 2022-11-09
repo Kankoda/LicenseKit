@@ -13,8 +13,16 @@ import LicenseKit
  This extension has a license that can be used by other apps
  or libraries that want to use DemoPackage.
 
- If you're using LicenseKit in your library, this is how you
- can define licenses for a `LocalLicenseRegistrationService`.
+ Think of this as a way to set up a local license collection
+ for your library. Local licenses have many benefits, but it
+ requires new versions to be released to update the licenses,
+ which may not always be ideal.
+
+ The library also defines more licenses in a `licenses` file,
+ which is another option for managing many licenses that can
+ change often, e.g. if you get daily license files from your
+ license service provider. This lets you update all licenses
+ by replacing a single file.
  */
 extension License {
     

@@ -31,7 +31,7 @@ public final class DemoPackage {
      */
     public static func setup(
         withLicenseKey key: String,
-        method: String
+        source: LicenseSource
     ) async throws -> License {
         
         // This key grants this library access to LicenseKit
@@ -39,7 +39,9 @@ public final class DemoPackage {
         
         // Try to setup a locale license engine with the key
         let engine = try LicenseEngine(licenseKey: licenseKitLicenseKey) { license in
-            try licenseRegistrationService(for: license, method: method)
+            try licenseRegistrationService(
+                for: license,
+                source: source)
         }
         
         // Try to validate provided license key
@@ -58,34 +60,30 @@ public final class DemoPackage {
      to validate that a valid license key is registered.
      */
     public static func validateCustomerLicense() throws {
-        guard let license = customerLicense else { throw TempError.missingLicense }
+        guard let license = customerLicense else { throw LicenseError.missingLicense }
         try license.validate()
     }
-}
-
-enum TempError: Error {
-    case missingLicense // Will be re-added to LicenseError
 }
 
 private extension DemoPackage {
 
     /**
      Create a license registration service with the provided
-     customer license and registration method.
+     customer license and source.
      */
     static func licenseRegistrationService(
         for license: License,
-        method: String
+        source: LicenseSource
     ) throws -> LicenseService {
-        switch method {
-        case "csv":
+        switch source {
+        case .csv:
             return try CsvLicenseService.demoService(for: license)
-        case "local":
+        case .local:
             return try LocalLicenseService.demoService(for: license)
-        case "remote":
+        case .remote:
             return try RemoteLicenseService<FakeNetworkResponse>.demoService(for: license)
         default:
-            fatalError("Unhandled method")
+            fatalError("Unhandled source")
         }
     }
 }

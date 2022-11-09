@@ -51,7 +51,7 @@ private extension HomeScreen {
     
     var appLicenseSection: some View {
         Group {
-            Section(header: Text("App License"), footer: Text("This license key is defined by the app as it launches. Register it to unlock the app.")) {
+            Section(header: Text("App License"), footer: Text("This license is defined in the app. Register it to unlock the app.")) {
                 appLicenseKeyTextField
                 StatusListItem(status: hasAppLicense, title: "Has valid app license")
                 if let license = context.appLicense {
@@ -66,7 +66,7 @@ private extension HomeScreen {
     }
     
     var packageLicenseSection: some View {
-        Section(header: Text("Demo Package License"), footer: Text("This license is setup by the demo package. The app registers this key as it launches.")) {
+        Section(header: Text("Demo Package License"), footer: Text("This license is defined in the demo library. The app registers it as it launches.")) {
             StatusListItem(status: hasDemoPackageLicense, title: "Has valid package license")
             StatusListItem(status: hasDemoPackageFeature, title: "Can access package feature")
             if let license = context.demoPackageLicense {
