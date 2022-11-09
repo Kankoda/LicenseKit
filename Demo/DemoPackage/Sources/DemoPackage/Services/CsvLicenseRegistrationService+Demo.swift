@@ -1,5 +1,5 @@
 //
-//  CsvLicenseRegistrationService+Demo.swift
+//  CsvLicenseService+Demo.swift
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-10-27.
@@ -9,14 +9,14 @@
 import Foundation
 import LicenseKit
 
-extension CsvLicenseRegistrationService {
+extension CsvLicenseService {
 
     /**
      This service uses customer licenses that are defined in
      `Resources/licenses.txt`.
      */
-    static func demoService(for license: License) throws -> CsvLicenseRegistrationService {
-        try CsvLicenseRegistrationService(
+    static func demoService(for license: License) throws -> CsvLicenseService {
+        try CsvLicenseService(
             license: license,
             fileName: "licenses",
             fileExtension: "txt",
@@ -26,7 +26,7 @@ extension CsvLicenseRegistrationService {
                     License(
                         licenseKey: row[0],
                         customer: LicenseCustomer(name: row[1]),
-                        additionalInfo: ["registration-method": LicenseRegistrationMethod.csvFile.rawValue]
+                        additionalInfo: ["registration-method": "csv"]
                     )
                 }
             }

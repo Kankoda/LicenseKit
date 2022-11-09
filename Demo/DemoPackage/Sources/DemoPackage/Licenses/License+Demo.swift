@@ -19,7 +19,7 @@ import LicenseKit
 extension License {
     
     /// This license can only be used by the demo app.
-    static func demoLicense(method: LicenseRegistrationMethod) -> License {
+    static func demoLicense(method: String) -> License {
         License(
             licenseKey: "6A34BED3-5A7F-44B9-A3C6-3415463C4D0B",
             customer: .demoCustomer,
@@ -27,7 +27,7 @@ extension License {
             allowsExpiration: false,
             platforms: .all,
             bundleIds: ["com.licensekit.demo"],
-            additionalInfo: ["registration-method" : method.rawValue]
+            additionalInfo: ["registration-method" : method]
         )
     }
 }

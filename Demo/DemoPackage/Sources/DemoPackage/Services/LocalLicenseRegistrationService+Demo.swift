@@ -1,5 +1,5 @@
 //
-//  LocalLicenseRegistrationService+Demo.swift
+//  LocalLicenseService+Demo.swift
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-10-27.
@@ -8,16 +8,16 @@
 
 import LicenseKit
 
-extension LocalLicenseRegistrationService {
+extension LocalLicenseService {
 
     /**
      This service uses customer licenses that are defined in
      `Licenses/License+Demo`.
      */
-    static func demoService(for license: License) throws -> LocalLicenseRegistrationService {
-        try LocalLicenseRegistrationService(
+    static func demoService(for license: License) throws -> LocalLicenseService {
+        try LocalLicenseService(
             license: license,
-            licenses: [.demoLicense(method: .local)]
+            licenses: [.demoLicense(method: "local")]
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RemoteLicenseRegistrationService+Demo.swift
+//  RemoteLicenseService+Demo.swift
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-10-27.
@@ -9,14 +9,14 @@
 import Foundation
 import LicenseKit
 
-extension RemoteLicenseRegistrationService {
+extension RemoteLicenseService {
 
     /**
      This service uses a fake network service that returns a
      demo license that is defined in `Licenses/License+Demo`.
      */
-    static func demoService(for license: License) throws -> RemoteLicenseRegistrationService<ResponseType> {
-        try RemoteLicenseRegistrationService<ResponseType>(
+    static func demoService(for license: License) throws -> RemoteLicenseService<ResponseType> {
+        try RemoteLicenseService<ResponseType>(
             license: license,
             networkService: FakeNetworkService(),
             urlBuilder: { licenseKey in URL(string: "https://not-used")! },
@@ -28,7 +28,7 @@ extension RemoteLicenseRegistrationService {
 
 struct FakeNetworkResponse: LicenseMappable, Encodable {
 
-    var license: License { .demoLicense(method: .remote) }
+    var license: License { .demoLicense(method: "remote") }
 }
 
 private class FakeNetworkService: NetworkService {

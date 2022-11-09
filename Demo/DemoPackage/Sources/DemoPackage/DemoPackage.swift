@@ -31,7 +31,7 @@ public final class DemoPackage {
      */
     public static func setup(
         withLicenseKey key: String,
-        method: LicenseRegistrationMethod
+        method: String
     ) async throws -> License {
         
         // This key grants this library access to LicenseKit
@@ -43,7 +43,7 @@ public final class DemoPackage {
         }
         
         // Try to validate provided license key
-        let license = try await engine.registerLicenseKey(key)
+        let license = try await engine.getLicense(for: key)
         
         // Set the private engine and license for later use
         Self.engine = engine
@@ -58,9 +58,13 @@ public final class DemoPackage {
      to validate that a valid license key is registered.
      */
     public static func validateCustomerLicense() throws {
-        guard let license = customerLicense else { throw LicenseError.missingLicense }
+        guard let license = customerLicense else { throw TempError.missingLicense }
         try license.validate()
     }
+}
+
+enum TempError: Error {
+    case missingLicense // Will be re-added to LicenseError
 }
 
 private extension DemoPackage {
@@ -71,15 +75,15 @@ private extension DemoPackage {
      */
     static func licenseRegistrationService(
         for license: License,
-        method: LicenseRegistrationMethod
-    ) throws -> LicenseRegistrationService {
+        method: String
+    ) throws -> LicenseService {
         switch method {
-        case .csvFile:
-            return try CsvLicenseRegistrationService.demoService(for: license)
-        case .local:
-            return try LocalLicenseRegistrationService.demoService(for: license)
-        case .remote:
-            return try RemoteLicenseRegistrationService<FakeNetworkResponse>.demoService(for: license)
+        case "csv":
+            return try CsvLicenseService.demoService(for: license)
+        case "local":
+            return try LocalLicenseService.demoService(for: license)
+        case "remote":
+            return try RemoteLicenseService<FakeNetworkResponse>.demoService(for: license)
         default:
             fatalError("Unhandled method")
         }
