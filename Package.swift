@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LicenseKit",
-            url: "https://github.com/LicenseKit/LicenseKit/releases/download/0.3.0_binary/LicenseKit.zip",
-            checksum: "5dd9277e1e5381f01332b4328c3d184e8ca60b7ee0e96a2a95d1e5e0b626a5c1")
+            url: "https://github.com/LicenseKit/LicenseKit/releases/download/0.4.0_binary/LicenseKit.zip",
+            checksum: "5cb04ff4200cdd3521fc38c13ffdbded6354e3c58cea47030c899788d541f013")
     ]
 )
