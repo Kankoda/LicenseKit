@@ -17,6 +17,27 @@ versions that are not listed here.
 
 
 
+## 0.4
+
+This version adds a cached license service and new tier capabilities.
+
+This version also removes Quick and Nimble dependencies.
+
+### ✨ Features
+
+* `CachedLicenseService` is a new service that lets you cache previous operation.
+* `LicenseError` re-adds the `missingLicense` case.
+* `LicenseError` has a new `other` error type.
+* `LicenseError` has a new `isHigherTierNeeded` property.
+* `LicenseSource` is a new enum that can help you configure which service type tpo use.
+* `LicenseTier` has new tier comparison and validation functionality.
+
+### 💡 Behavior changes
+
+* `LicenseError` `isExpiredLicense` is renamed to `isExpired`.
+
+
+
 ## 0.3
 
 This version adds a FREE tier that you can use with any app or library. Just use "FREE" as license key when creating a license engine, and you will get a `trial` tier license.
