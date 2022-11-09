@@ -2,8 +2,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LicenseKit'
-  s.version          = '0.2.0'
-  s.swift_versions   = ['5.5']
+  s.version          = '0.4.0'
+  s.swift_versions   = ['5.6']
   s.summary          = 'LicenseKit lets you protect your closed-source Swift libraries.'
 
   s.description      = <<-DESC
@@ -16,10 +16,10 @@ LicenseKit lets you protect your closed-source Swift libraries with commercial l
   s.source           = { :git => 'https://github.com/danielsaidi/LicenseKit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/danielsaidi'
 
-  s.swift_version = '5.5'
+  s.swift_version = '5.6'
     
   s.ios.deployment_target = '13.0'
-  s.macos.deployment_target = '11.0'
+  s.macos.deployment_target = '12.0'
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '6.0'
 end
