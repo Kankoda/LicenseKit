@@ -5,8 +5,6 @@
 <p align="center">
     <img src="https://img.shields.io/github/v/release/danielsaidi/LicenseKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-5.6-orange.svg" alt="Swift 5.6" />
-    <img src="https://img.shields.io/badge/platform-SwiftUI-blue.svg" alt="Swift UI" title="Swift UI" />
-    <img src="https://img.shields.io/github/license/danielsaidi/LicenseKit" alt="MIT License" />
     <img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fdanielsaidi" alt="Twitter: @danielsaidi" title="Twitter: @danielsaidi" />
     <img src="https://img.shields.io/mastodon/follow/000253346?label=mastodon&style=social" alt="Mastodon: @danielsaidi@mastodon.social" title="Mastodon: @danielsaidi@mastodon.social" />
 </p>
@@ -17,7 +15,7 @@
 
 LicenseKit helps you protect your Swift-based apps and libraries with commercial licenses.
 
-LicenseKit lets you specify your licenses in `code`, in `files` or fetch them from an `external api`. Licenses can specify `expiration date`, supported `platforms` (iOS, macOS, tvOS, watchOS), `bundle IDs`, `tier`, `features` etc.
+LicenseKit lets you set up licenses in `code`, in `files`, fetch them from `external apis` etc. LicenseKit licenses can specify an `expiration date`, supported `platforms` (iOS, macOS, tvOS, watchOS), `bundle IDs`, `tier`, customizable `features` etc. which means that you can fully tailor your license offering.
 
 LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features. 
 
