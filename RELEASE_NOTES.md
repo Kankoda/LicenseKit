@@ -24,8 +24,14 @@ This version adds new features to the `License` type.
 ### ✨ Features
 
 * `License` can now specify `allowsExpirationInProduction` to only have expired licenses fail validation when debugging, but not in production.
+* `License` has new `name` and `activationDate` properties.
 * `License` has a new `validate(tier:)` function.
 * `License` has a new `validate(feature:or:)` function.
+* `License` feature validation now supports nil strings.
+
+### 💡 Behavior changes
+
+* `License` now has a single initializer that accepts both features and feature IDs.
 
 ### 💥 Breaking changes
 
