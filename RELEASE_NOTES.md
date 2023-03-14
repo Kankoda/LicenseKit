@@ -17,6 +17,24 @@ versions that are not listed here.
 
 
 
+## 0.5
+
+This version adds new features to the `License` type.
+
+### ✨ Features
+
+* `License` can now specify `allowsExpirationInProduction` to only have expired licenses fail validation when debugging, but not in production.
+* `License` has a new `validate(tier:)` function.
+* `License` has a new `validate(feature:or:)` function.
+
+### 💥 Breaking changes
+
+* `LicenseFeature` `featureId` is no longer optional.
+* `LicenseEngine` `getLicense` now uses an implicit parameter name.
+* `LicenseService` `getLicense` now uses an implicit parameter name.
+
+
+
 ## 0.4
 
 This version adds a cached license service and new tier capabilities.

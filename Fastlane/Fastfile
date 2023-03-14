@@ -7,6 +7,25 @@ platform :ios do
 
   # Version ================
 
+  desc "Create a new binary tag"
+  lane :binary_tag do |options|
+    ensure_git_status_clean
+    ensure_git_branch(branch: 'main')
+    
+    bump_type = options[:type]
+    if bump_type == nil or bump_type.empty?
+      bump_type = "patch"
+    end
+    
+    version = version_bump_podspec(path: "LicenseKit.podspec", bump_type: bump_type)
+    sh("cd .. && git checkout HEAD -- LicenseKit.podspec")
+  
+    add_git_tag(tag: version + "_binary")
+    push_git_tags()
+    push_to_git_remote()
+  end
+
+
   desc "Create a new version"
   lane :version do |options|
     ensure_git_status_clean

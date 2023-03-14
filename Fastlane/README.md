@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios binary_tag
+
+```sh
+[bundle exec] fastlane ios binary_tag
+```
+
+Create a new binary tag
+
 ### ios version
 
 ```sh
