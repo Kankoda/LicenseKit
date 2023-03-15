@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LicenseKit'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.swift_versions   = ['5.6']
   s.summary          = 'LicenseKit lets you protect your closed-source Swift libraries.'
 
