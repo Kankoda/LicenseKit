@@ -21,7 +21,9 @@ LicenseKit helps you protect your Swift-based apps and libraries with commercial
 
 LicenseKit lets you set up licenses in `code`, in `files`, fetch them from `external apis` etc. LicenseKit licenses can specify an `expiration date`, supported `platforms` (iOS, macOS, tvOS, watchOS), `bundle IDs`, `tier`, customizable `features` etc. which means that you can fully tailor your license offering.
 
-LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features. 
+LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features.
+
+LicenseKit supports `iOS 13`, `macOS 12`, `tvOS 13` and `watchOS 6`. 
 
 
 
@@ -34,14 +36,6 @@ https://github.com/LicenseKit/LicenseKit.git
 ```
 
 LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package, or add the LicenseKit binary to your library distributable.
-
-
-
-## Supported Platforms
-
-LicenseKit supports `iOS 13`, `macOS 12`, `tvOS 13` and `watchOS 6`.
-
-This means that you can use LicenseKit to protect your software on all major Apple platforms.
 
 
 
@@ -102,7 +96,7 @@ The [online documentation][Documentation] has articles, code examples etc. that 
 
 
 
-## Demo app
+## Demo Application
 
 The demo app lets you try out the library on iOS and macOS. Just open and run the `Demo` project.
 
@@ -121,7 +115,9 @@ Feel free to reach out if you have any questions or need help any way:
 
 ## License
 
-LicenseKit is closed source. See the [LICENSE][License] file for more info.
+LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features.
+
+See the [LICENSE][License] file for more info.
 
 
 
