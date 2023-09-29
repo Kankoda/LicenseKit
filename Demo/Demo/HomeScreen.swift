@@ -126,7 +126,8 @@ private extension HomeScreen {
             do {
                 context.appLicense = nil
                 context.appLicenseError = nil
-                let license = try await context.licenseEngine?.getLicense(for: appLicenseKey)
+                let license = try await context.licenseEngine?
+                    .getLicense(withKey: appLicenseKey)
                 updateContext(with: license)
             } catch {
                 updateContext(with: error as? LicenseError)

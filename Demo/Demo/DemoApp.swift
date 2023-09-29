@@ -20,7 +20,7 @@ struct DemoApp: App {
     private let appLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
 
     // Use this to set how the demo package should register licenses.
-    private let packageLicenseSource = LicenseSource.local
+    private let packageLicenseSource = LicenseSource.binary
 
     var body: some Scene {
         WindowGroup {
@@ -79,9 +79,9 @@ private extension DemoApp {
      */
     func tryRegisterAppLicense() {
         context.licenseEngine = try? LicenseEngine(licenseKey: appLicenseKey) { license in
-            try LocalLicenseService(
+            try BinaryLicenseService(
                 license: license,
-                licenses: [
+                customerLicenses: [
                     License(
                         licenseKey: "4B142177-214B-447F-9E57-8E906DE6FCFC",
                         customer: LicenseCustomer(name: "Demo app user"),
@@ -91,7 +91,8 @@ private extension DemoApp {
                         platforms: [.iOS],
                         additionalInfo: [
                             "source" : packageLicenseSource.id
-                        ])
+                        ]
+                    )
                 ]
             )
         }

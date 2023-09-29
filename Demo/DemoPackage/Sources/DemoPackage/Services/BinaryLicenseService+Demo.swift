@@ -1,5 +1,5 @@
 //
-//  LocalLicenseService+Demo.swift
+//  BinaryLicenseService+Demo.swift
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-10-27.
@@ -8,16 +8,16 @@
 
 import LicenseKit
 
-extension LocalLicenseService {
+extension BinaryLicenseService {
 
     /**
      This service uses customer licenses that are defined in
      `Licenses/License+Demo`.
      */
-    static func demoService(for license: License) throws -> LocalLicenseService {
-        try LocalLicenseService(
+    static func demoService(for license: License) throws -> BinaryLicenseService {
+        try .init(
             license: license,
-            licenses: [.demoLicense(method: "local")]
+            customerLicenses: [.demoLicense(method: "local")]
         )
     }
 }

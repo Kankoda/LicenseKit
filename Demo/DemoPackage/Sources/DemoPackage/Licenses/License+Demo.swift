@@ -33,8 +33,8 @@ extension License {
             customer: .demoCustomer,
             expirationDate: Date().addingTimeInterval(3600),
             allowsExpiration: false,
-            platforms: .all,
             bundleIds: ["com.licensekit.demo"],
+            platforms: .all,
             additionalInfo: ["registration-method" : method]
         )
     }

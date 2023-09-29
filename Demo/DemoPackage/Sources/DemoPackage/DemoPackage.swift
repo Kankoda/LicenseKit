@@ -45,7 +45,7 @@ public final class DemoPackage {
         }
         
         // Try to validate provided license key
-        let license = try await engine.getLicense(for: key)
+        let license = try await engine.getLicense(withKey: key)
         
         // Set the private engine and license for later use
         Self.engine = engine
@@ -76,12 +76,12 @@ private extension DemoPackage {
         source: LicenseSource
     ) throws -> LicenseService {
         switch source {
-        case .csv:
-            return try CsvLicenseService.demoService(for: license)
-        case .local:
-            return try LocalLicenseService.demoService(for: license)
-        case .remote:
-            return try RemoteLicenseService<FakeNetworkResponse>.demoService(for: license)
+        case .api:
+            return try ApiLicenseService<FakeNetworkResponse>.demoService(for: license)
+        case .binary:
+            return try BinaryLicenseService.demoService(for: license)
+        case .file:
+            return try FileBasedLicenseService.demoService(for: license)
         default:
             fatalError("Unhandled source")
         }
