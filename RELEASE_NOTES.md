@@ -17,52 +17,46 @@ versions that are not listed here.
 
 
 
-## 0.7
+## 0.6
 
 This version adds Gumroad integration.
 
-Due to findings when integrating with Gumroad, this version has many breaking changes from the last minor version.
+This version also aims to streamline the library, and thus has many breaking changes.
+
+### 🚨 Important Changes
+
+* The FREE tier can now only handle 5 licenses instead of the previous 10.
 
 ### ✨ New Features
 
 * `ApiLicenseServiceConfiguration` is a new struct that can be used to define various configurations.
-* `ApiLicenseServiceConfiguration` has a Gumroad-specific configuration.
+* `ApiLicenseServiceConfiguration` has a new Gumroad-specific configuration.
+* `License` has a bunch of new validation functions.
+* `LicenseEnvironment` has a new `.all` property.
 * `LicenseError` has new cases.
 * `Gumroad` is a new namespace for Gumroad-specific types.
 * `GumroadLicenseService` is a new service for Gumroad integrations.
 
-### 💡 Adjustments
-
-* `ApiLicenseService` now throws an `ApiError` if the provided URL is invalid.
-* `ApiLicenseService` now throws an `ApiError` if the provided URL is invalid.
-
-### 🪪 Renamings
+### 💥 Breaking changes
 
 * `CsvLicenseService` has been renamed to `FileBasedLicenseService`.
-* `LocalLicenseService` has been renamed to `CodeBasedLicenseService`.
+* `LocalLicenseService` has been renamed to `BinaryLicenseService`.
 * `RemoteLicenseService` has been renamed to `ApiLicenseService`.
-
-### 💥 Breaking changes
 
 * `ApiLicenseService` replaces init parameters with a `configuration`.
 * `ApiLicenseService` replaces `LicenseMappable` with a `licenseMapping`.
+* `ApiLicenseService` uses a `URLSession` instead of a `NetworkService`.
 * `ApiLicenseServiceConfiguration` uses a URL string instead of an URL.
-* `LicenseMappable` has been removed, since `ApiLicenseService` has a mapping parameter now.
-* `LicenseService` implementations have been renamed, as described above.
+* `CsvFileError` has been removed.
+* `FileBasedLicenseService` `licenseBuilder` has been renamed to `licenseMapping` and now maps a single row.
+* `License` now takes an environment array instead of an optional one.
+* `License` renames a bunch of validation functions.
+* `LicenseMappable` has been removed.
 * `LicenseService` `getLicense(_:)` has changed signature to `getLicense(withKey:)`.
+* `LicenseTier` no longer has any validation functions.
 * `LocalLicenseService` renames `licenses` to `customerLicenses`.
-
-
-
-## 0.6
-
-This version adds new license tiers.
-
-### 💡 Adjustments
-
-* `LicenseTier` now has a name-only initializer can be used to resolve a predefined tier.
-* `LicenseTier` has new `.indie`, `.startup`, `.business` and `.enterprise` tiers.
-* The pre-defined `LicenseTier` values have removed the `com.licensekit` prefix from their IDs.
+* `NetworkService` has been removed.
+* `StandardNetworkService` has been removed.
 
 
 
