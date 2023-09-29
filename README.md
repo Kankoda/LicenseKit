@@ -17,13 +17,21 @@
 
 ## About LicenseKit
 
-LicenseKit helps you protect your Swift-based apps and libraries with commercial licenses.
+LicenseKit helps you protect your software with commercial licenses. It supports all major Apple platforms (iOS, iPadOS, macOS, tvOS and watchOS) and can validate licenses on-device and over remote web requests.
 
-LicenseKit lets you set up licenses in `code`, in `files`, fetch them from `external apis` etc. LicenseKit licenses can specify an `expiration date`, supported `platforms` (iOS, macOS, tvOS, watchOS), `bundle IDs`, `tier`, customizable `features` etc. which means that you can fully tailor your license offering.
+You can define licenses with code code that is compiled into the product binary, read licenses from files that are bundled within the binary, validate licenses over remote web requests, etc. 
 
-LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features.
+Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, specific features, and much more.
 
-LicenseKit supports `iOS 13`, `macOS 12`, `tvOS 13` and `watchOS 6`. 
+LicenseKit supports iOS 13, macOS 12, tvOS 13 and watchOS 6.
+
+
+
+## Pricing
+
+LicenseKit requires a commercial license to be used. It's free to start using and affordable to scale.
+
+You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of code- and file-based licenses and features.
 
 
 
@@ -41,16 +49,18 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 ## Getting started
 
-The [online documentation][Documentation] has a [getting started guide][Getting-Started] that will help you get started with LicenseKit.
+The [online documentation][Documentation] has a [getting started guide][Getting-Started] that helps you get started with LicenseKit.
 
-Basically, you should first create a `LicenseEngine` with your LicenceKit license key. If you received `ABC123` as license key when signing up for LicenseKit, the code could look like this:
+Basically, you should first create a `LicenseEngine` with your LicenceKit license key, and provide it with a `LicenseService` that defines how to validate licenses. 
+
+For instance, you have an `ABC123` LicenseKit license key, the engine creation code could look like this:
 
 ```swift
 // You can use FREE as license key to test the trial version
 let engine = try LicenseEngine(licenseKey: "ABC123") { license in
-    LocalLicenseService(
+    CodeBasedLicenseService(
         license: license,
-        licenses: [
+        customerLicenses: [
             License(licenseKey: "license-key-1"),
             License(licenseKey: "license-key-2")
         ]
@@ -58,35 +68,15 @@ let engine = try LicenseEngine(licenseKey: "ABC123") { license in
 }
 ```
 
-If the license key is valid and refers to a valid license, the license engine will be created with the service you define in the service builder. If not, a ``LicenseError`` is thrown.
-
 Once you have a license engine, you can use it to handle customer licenses:
 
 ```swift
-let license = try await engine.getLicense(for: "customer license key")
+let license = try await engine.getLicense(for: "license-key-1")
 ```
 
 Just like when creating a license engine, the license will be returned if the license key is valid and refers to a valid license, otherwise a ``LicenseError`` is thrown. 
 
-Licenses can specify customer information, tier, activation and expiration dates, supported platforms (iOS, macOS, tvOS, watchOS), bundle IDs, features etc. 
-
-You can use licenses to protect functionality in your app or library. For instance, this class requires a `.gold` tier OR that the license includes a certain feature:
-
-```swift
-public class MyVerySpecialClass {
-
-    public init() throws {
-        try license.validate(feature: .myCoolFeature, or: .gold)
-        ...
-    }
-
-    ...
-}
-```
-
-This makes it impossible to create instances without a valid license, since the initializer will throw an error if the license is invalid.
-
-For more information, please see the [online documentation][Documentation] and [getting started guide][Getting-Started].
+For more information, please see the [online documentation][Documentation] and the [getting started guide][Getting-Started].
 
 
 
@@ -115,9 +105,7 @@ Feel free to reach out if you have any questions or need help any way:
 
 ## License
 
-LicenseKit requires a commercial license to be used. You can purchase a license from the [LicenseKit website][Website] or use `FREE` as license key to use the library with a limited number of licenses and features.
-
-See the [LICENSE][License] file for more info.
+KeyboardKit Pro is closed source. See the [LICENSE][License] file for more info.
 
 
 
