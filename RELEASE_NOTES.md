@@ -33,6 +33,7 @@ This version nests license types under the `License` model and replaces the lice
 * `LicenseEnvironment` has been renamed to `License.Environment`.
 * `LicensePlatform` has been renamed to `License.Platform`.
 * `LicenseSource` has been renamed to `License.Source`.
+* `LicenseTier` has been renamed to `License.Tier`.
 
 
 

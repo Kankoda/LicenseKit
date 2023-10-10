@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 
 import PackageDescription
 
@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LicenseKit",
-            url: "https://github.com/LicenseKit/LicenseKit/releases/download/0.6.0_binary/LicenseKit.zip",
-            checksum: "6827319ee0600df2dd40cc867bb8dd18a938c329f2be87225b92c85ca8d23ff4")
+            url: "https://github.com/LicenseKit/LicenseKit/releases/download/0.7.0_binary/LicenseKit.zip",
+            checksum: "5ffd005b84aff72b53e489920ddedae39d3dfe3306384e526e7e73dcc9feae43")
     ]
 )
