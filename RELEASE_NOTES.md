@@ -17,6 +17,25 @@ versions that are not listed here.
 
 
 
+## 0.7
+
+This version nests license types under the `License` model and replaces the license services with a `LicenseServiceType`.
+
+### 🚨 Important Changes
+
+* All license services are now resolved with a `LicenseServiceType` enum instead.
+
+### 💥 Breaking changes
+
+* All concrete service types have been made internal.
+* Api-based license mapping is no longer generic, and maps raw data instead.
+* `LicenseCustomer` has been renamed to `License.Customer`.
+* `LicenseEnvironment` has been renamed to `License.Environment`.
+* `LicensePlatform` has been renamed to `License.Platform`.
+* `LicenseSource` has been renamed to `License.Source`.
+
+
+
 ## 0.6
 
 This version adds Gumroad integration.
@@ -29,8 +48,8 @@ This version also aims to streamline the library, and thus has many breaking cha
 
 ### ✨ New Features
 
-* `ApiLicenseServiceConfiguration` is a new struct that can be used to define various configurations.
-* `ApiLicenseServiceConfiguration` has a new Gumroad-specific configuration.
+* `ApiConfiguration` is a new struct that can be used to define various configurations.
+* `ApiConfiguration` has a new Gumroad-specific configuration.
 * `License` has a bunch of new validation functions.
 * `LicenseEnvironment` has a new `.all` property.
 * `LicenseError` has new cases.
@@ -43,10 +62,10 @@ This version also aims to streamline the library, and thus has many breaking cha
 * `LocalLicenseService` has been renamed to `BinaryLicenseService`.
 * `RemoteLicenseService` has been renamed to `ApiLicenseService`.
 
+* `ApiConfiguration` uses a URL string instead of an URL.
 * `ApiLicenseService` replaces init parameters with a `configuration`.
 * `ApiLicenseService` replaces `LicenseMappable` with a `licenseMapping`.
 * `ApiLicenseService` uses a `URLSession` instead of a `NetworkService`.
-* `ApiLicenseServiceConfiguration` uses a URL string instead of an URL.
 * `CsvFileError` has been removed.
 * `FileBasedLicenseService` `licenseBuilder` has been renamed to `licenseMapping` and now maps a single row.
 * `License` now takes an environment array instead of an optional one.
