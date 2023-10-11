@@ -17,6 +17,12 @@ versions that are not listed here.
 
 
 
+## 0.7.1
+
+This version adjusts the number of licenses that can be used with the free trial.
+
+
+
 ## 0.7
 
 This version nests license types under the `License` model and replaces the license services with a `LicenseServiceType`.

@@ -17,9 +17,9 @@
 
 ## About LicenseKit
 
-LicenseKit helps you protect your software with commercial licenses. It supports all major Apple platforms (iOS, iPadOS, macOS, tvOS and watchOS) and can validate licenses on-device and over remote web requests.
+LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, iPadOS, macOS, tvOS and watchOS).
 
-You can define licenses with code code that is compiled into the product binary, read licenses from files that are bundled within the binary, validate licenses over remote web requests, etc. 
+You can define licenses with code that is compiled into the product binary, read licenses from files that are bundled within the binary or from any accessible URL, validate licenses over web requests, etc. 
 
 Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, specific features, and much more.
 
@@ -43,7 +43,7 @@ LicenseKit can be installed with the Swift Package Manager:
 https://github.com/LicenseKit/LicenseKit.git
 ```
 
-LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package, or add the LicenseKit binary to your library distributable.
+LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package.
 
 
 
@@ -51,16 +51,16 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 The [online documentation][Documentation] has a [getting started guide][Getting-Started] that helps you get started with LicenseKit.
 
-When using LicenseKit, you should first create a `LicenseEngine` with your LicenceKit license key.
+When using LicenseKit, you should first create a `LicenseEngine`, which will be used to validate licenses. The engine can only be created with a valid LicenseKit license key. 
 
-The engine will only be created if your license key is valid. It will then provide you with your LicenseKit `License`, which you can then use to provide the engine with a `LicenseService` that will be used to get licenses for your product.
+If you provide a valid license key, the engine will call a service builder in which you can define how you want to access customer licenses for *your* product.
 
-Here, we use an `ABC123` license key to create an engine that use a `BinaryLicenseService` with licenses defined directly in the source code:
+Here, we use the "FREE" LicenseKit license key to create an license engine that use `.binary` licenses that are defined directly in the source code:
 
 ```swift
 // You can use FREE as license key to test the trial version
-let engine = try LicenseEngine(licenseKey: "ABC123") { license in
-    try BinaryLicenseService(
+let engine = try LicenseEngine(licenseKey: "Your license key") { license in
+    .binary(
         license: license,
         customerLicenses: [
             License(licenseKey: "license-key-1"),
@@ -70,17 +70,15 @@ let engine = try LicenseEngine(licenseKey: "ABC123") { license in
 }
 ```
 
-You can choose from many different service types within the library, such as `BinaryLicenseService`, `FileBasedLicenseService`, `ApiLicenseService`, etc.
+You can choose from many different service types within the library, such as `.binary`, `.file`, `.api`, `.gumroad` etc.
 
-Once you have a license engine, you can use it to get licenses for your customers:
+Once you have a license engine instance, you can use it to get licenses for your customers:
 
 ```swift
 let license = try await engine.getLicense(for: "license-key-1")
 ```
 
-Just like when creating your license engine and service instances, the engine will only return a license if the license key is valid and refers to a valid license.
-
-LicenseKit will by default validate the license for the current platform, bundle and date. You can perform more validations after retrieving the license.  
+The engine will only return a license if the license key is valid and refers to a valid license. LicenseKit will by default validate the license for the current platform, bundle and date. You can perform more validations after retrieving the license.  
 
 For more information, please see the [online documentation][Documentation] and the [getting started guide][Getting-Started].
 
