@@ -20,7 +20,7 @@ struct DemoApp: App {
     private let appLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
 
     // Use this to set how the demo package should register licenses.
-    private let packageLicenseSource = LicenseSource.binary
+    private let packageLicenseSource = License.Source.binary
 
     var body: some Scene {
         WindowGroup {
@@ -79,12 +79,12 @@ private extension DemoApp {
      */
     func tryRegisterAppLicense() {
         context.licenseEngine = try? LicenseEngine(licenseKey: appLicenseKey) { license in
-            try BinaryLicenseService(
+            .binary(
                 license: license,
                 customerLicenses: [
                     License(
                         licenseKey: "4B142177-214B-447F-9E57-8E906DE6FCFC",
-                        customer: LicenseCustomer(name: "Demo app user"),
+                        customer: .init(name: "Demo app user"),
                         tier: .gold,
                         expirationDate: Date().addingTimeInterval(3600),
                         allowsExpiration: false,

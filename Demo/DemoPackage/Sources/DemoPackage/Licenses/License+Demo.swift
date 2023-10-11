@@ -40,10 +40,10 @@ extension License {
     }
 }
 
-extension LicenseCustomer {
+extension License.Customer {
 
     /// This customer could be bound to several licenses.
-    static let demoCustomer = LicenseCustomer(
+    static let demoCustomer = Self(
         name: "Kankoda",
         contact: "Daniel Saidi",
         address: "Stockholm, Sweden",

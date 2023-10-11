@@ -31,7 +31,7 @@ public final class DemoPackage {
      */
     public static func setup(
         withLicenseKey key: String,
-        source: LicenseSource
+        source: License.Source
     ) async throws -> License {
         
         // This key grants this library access to LicenseKit
@@ -39,9 +39,10 @@ public final class DemoPackage {
         
         // Try to setup a locale license engine with the key
         let engine = try LicenseEngine(licenseKey: licenseKitLicenseKey) { license in
-            try licenseRegistrationService(
+            licenseRegistrationService(
                 for: license,
-                source: source)
+                source: source
+            )
         }
         
         // Try to validate provided license key
@@ -73,15 +74,28 @@ private extension DemoPackage {
      */
     static func licenseRegistrationService(
         for license: License,
-        source: LicenseSource
-    ) throws -> LicenseService {
+        source: License.Source
+    ) -> LicenseServiceType {
         switch source {
-        case .api:
-            return try ApiLicenseService<FakeNetworkResponse>.demoService(for: license)
         case .binary:
-            return try BinaryLicenseService.demoService(for: license)
+            return .binary(
+                license: license,
+                customerLicenses: [.demoLicense(method: "local")]
+            )
         case .file:
-            return try FileBasedLicenseService.demoService(for: license)
+            return .file(
+                license: license,
+                fileName: "licenses",
+                fileExtension: "txt",
+                bundle: .demoPackage,
+                licenseMapping: { row in
+                    License(
+                        licenseKey: row[0],
+                        customer: .init(name: row[1]),
+                        additionalInfo: ["registration-method": "csv"]
+                    )
+                }
+            )
         default:
             fatalError("Unhandled source")
         }
