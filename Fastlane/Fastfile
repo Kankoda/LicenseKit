@@ -17,8 +17,8 @@ platform :ios do
       bump_type = "patch"
     end
     
-    version = version_bump_podspec(path: "LicenseKit.podspec", bump_type: bump_type)
-    sh("cd .. && git checkout HEAD -- LicenseKit.podspec")
+    version = version_bump_podspec(path: "Version", bump_type: bump_type)
+    sh("cd .. && git checkout HEAD -- Version")
   
     add_git_tag(tag: version + "_binary")
     push_git_tags()
