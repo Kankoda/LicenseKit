@@ -17,6 +17,14 @@ versions that are not listed here.
 
 
 
+## 0.8
+
+This version adds `cached` configurations to `.api` and `.gumroad` services.
+
+This lets you create cached services without manually having to wrap them in a cached instance.
+
+
+
 ## 0.7.1
 
 This version adjusts the number of licenses that can be used with the free trial.
