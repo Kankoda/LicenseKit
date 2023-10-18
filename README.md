@@ -19,9 +19,9 @@
 
 LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, iPadOS, macOS, tvOS and watchOS).
 
-You can define licenses with code that is compiled into the product binary, read licenses from files that are bundled within the binary or from any accessible URL, validate licenses over web requests, etc. 
+You can define licenses with code that is compiled into the product binary, read licenses from files, validate licenses from remote APIs, integrate with services like Gumroad, etc. 
 
-Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, specific features, and much more.
+Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, environment, features, and much more.
 
 LicenseKit supports iOS 13, macOS 12, tvOS 13 and watchOS 6.
 
@@ -49,16 +49,15 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 ## Getting started
 
-The [online documentation][Documentation] has a [getting started guide][Getting-Started] that helps you get started with LicenseKit.
+The [online documentation][Documentation] has a [getting-started guide][Getting-Started] that helps you get started with LicenseKit.
 
-When using LicenseKit, you should first create a `LicenseEngine`, which will be used to validate licenses. The engine can only be created with a valid LicenseKit license key. 
+In LicenseKit, a `LicenseEngine` is used to manage licenses that you have sold or provided to your users, e.g. by selling licenses on Gumroad or Lemon Squeezy. 
 
-If you provide a valid license key, the engine will call a service builder in which you can define how you want to access customer licenses for *your* product.
+Use *your* LicenseKit license key to create a `LicenseEngine`, then provide the engine with a service that will be used to get licenses for *your* product.
 
-Here, we use the "FREE" LicenseKit license key to create an license engine that use `.binary` licenses that are defined directly in the source code:
+Here, we use the "FREE" LicenseKit license key to create an license engine that uses a `.binary` license service with hard-coded licenses:
 
 ```swift
-// You can use FREE as license key to test the trial version
 let engine = try LicenseEngine(licenseKey: "Your license key") { license in
     .binary(
         license: license,
@@ -70,9 +69,9 @@ let engine = try LicenseEngine(licenseKey: "Your license key") { license in
 }
 ```
 
-You can choose from many different service types within the library, such as `.binary`, `.file`, `.api`, `.gumroad` etc.
+You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, etc.
 
-Once you have a license engine instance, you can use it to get licenses for your customers:
+Once you have a license engine, you can use it to get licenses with license keys for your product:
 
 ```swift
 let license = try await engine.getLicense(for: "license-key-1")
