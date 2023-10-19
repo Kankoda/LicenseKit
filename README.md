@@ -4,9 +4,9 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/danielsaidi/LicenseKit?color=%2300550&sort=semver" alt="Version" />
-    <img src="https://img.shields.io/badge/Swift-5.6-orange.svg" alt="Swift 5.6" />
+    <img src="https://img.shields.io/badge/Swift-5.7-orange.svg" alt="Swift 5.7" />
     <a href="https://twitter.com/getlicensekit">
-        <img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fdanielsaidi" alt="Twitter: @danielsaidi" title="Twitter: @danielsaidi" />
+        <img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fgetlicensekit" alt="Twitter: @getlicensekit" title="Twitter: @getlicensekit" />
     </a>
     <a href="https://techhub.social/@licensekit">
         <img src="https://img.shields.io/mastodon/follow/109340846532086151?domain=https%3A%2F%2Ftechhub.social&label=Mastodon&style=social" alt="Mastodon: @licensekit@techhub.social" title="Mastodon: @licensekit@techhub.social" />
@@ -23,7 +23,7 @@ You can define licenses with code that is compiled into the product binary, read
 
 Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, environment, features, and much more.
 
-LicenseKit supports iOS 13, macOS 12, tvOS 13 and watchOS 6.
+LicenseKit supports iOS 15, macOS 13, tvOS 15 and watchOS 8.
 
 
 
@@ -51,17 +51,16 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 The [online documentation][Documentation] has a [getting-started guide][Getting-Started] that helps you get started with LicenseKit.
 
-In LicenseKit, a `LicenseEngine` is used to manage licenses that you have sold or provided to your users, e.g. by selling licenses on Gumroad or Lemon Squeezy. 
+In LicenseKit, a ``LicenseEngine`` is used to manage your product licenses.
 
-Use *your* LicenseKit license key to create a `LicenseEngine`, then provide the engine with a service that will be used to get licenses for *your* product.
+Use *your* LicenseKit license key to create a ``LicenseEngine``, then define which license service to use.
 
-Here, we use the "FREE" LicenseKit license key to create an license engine that uses a `.binary` license service with hard-coded licenses:
+Here, we use the "FREE" LicenseKit license key to create an license engine that uses a `.binary` service with hard-coded licenses:
 
 ```swift
-let engine = try LicenseEngine(licenseKey: "Your license key") { license in
+let engine = try LicenseEngine(licenseKey: "Your license key") {
     .binary(
-        license: license,
-        customerLicenses: [
+        licenses: [
             License(licenseKey: "license-key-1"),
             License(licenseKey: "license-key-2")
         ]
@@ -69,15 +68,9 @@ let engine = try LicenseEngine(licenseKey: "Your license key") { license in
 }
 ```
 
-You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, etc.
+The engine will use the service(s) you specified to get the license, and will by default validate the license for the current platform, bundle and date before returning it.
 
-Once you have a license engine, you can use it to get licenses with license keys for your product:
-
-```swift
-let license = try await engine.getLicense(for: "license-key-1")
-```
-
-The engine will only return a license if the license key is valid and refers to a valid license. LicenseKit will by default validate the license for the current platform, bundle and date. You can perform more validations after retrieving the license.  
+You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, etc.  
 
 For more information, please see the [online documentation][Documentation] and the [getting started guide][Getting-Started].
 
@@ -108,7 +101,7 @@ Feel free to reach out if you have any questions or need help any way:
 
 ## License
 
-KeyboardKit Pro is closed source. See the [LICENSE][License] file for more info.
+LicenseKit is closed source. See the [LICENSE][License] file for more info.
 
 
 
