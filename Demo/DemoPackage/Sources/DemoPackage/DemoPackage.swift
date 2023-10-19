@@ -38,11 +38,8 @@ public final class DemoPackage {
         let licenseKitLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
         
         // Try to setup a locale license engine with the key
-        let engine = try LicenseEngine(licenseKey: licenseKitLicenseKey) { license in
-            licenseRegistrationService(
-                for: license,
-                source: source
-            )
+        let engine = try await LicenseEngine(licenseKey: licenseKitLicenseKey) {
+            licenseRegistrationService(for: source)
         }
         
         // Try to validate provided license key
@@ -73,18 +70,15 @@ private extension DemoPackage {
      customer license and source.
      */
     static func licenseRegistrationService(
-        for license: License,
-        source: License.Source
+        for source: License.Source
     ) -> LicenseServiceType {
         switch source {
         case .binary:
             return .binary(
-                license: license,
-                customerLicenses: [.demoLicense(method: "local")]
+                licenses: [.demoLicense(method: "local")]
             )
         case .file:
             return .file(
-                license: license,
                 fileName: "licenses",
                 fileExtension: "txt",
                 bundle: .demoPackage,
