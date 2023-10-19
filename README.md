@@ -58,7 +58,7 @@ Use *your* LicenseKit license key to create a ``LicenseEngine``, then define whi
 Here, we use the "FREE" LicenseKit license key to create an license engine that uses a `.binary` service with hard-coded licenses:
 
 ```swift
-let engine = try LicenseEngine(licenseKey: "Your license key") {
+let engine = try await LicenseEngine(licenseKey: "Your license key") {
     .binary(
         licenses: [
             License(licenseKey: "license-key-1"),
