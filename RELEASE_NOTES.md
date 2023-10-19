@@ -19,9 +19,24 @@ versions that are not listed here.
 
 ## 0.8
 
-This version adds `cached` configurations to `.api` and `.gumroad` services.
+This version adds capabilities that unlock monthly subscriptions for LicenseKit.
 
-This lets you create cached services without manually having to wrap them in a cached instance.
+### ✨ New Features
+
+* `Gumroad.Purchase` now has default parsed `license` properties.
+* `LicenseEngine` can now be created with a Gumroad license key.
+* `LicenseServiceType` cases no longer need a license to be used.
+* `LicenseServiceType.api` and `.gumroad` has new `cached` capabilities.
+
+### 💡 Adjustments
+
+* The license tiers and their capabilities have been tweaked.
+
+### 💥 Breaking changes
+
+* The `LicenseEngine` initializer is now async to support Gumroad.
+* The `LicenseEngine` service builder is no longer given the license.
+* The `LicenseServiceType` cases no longer need a license to be used.
 
 
 
