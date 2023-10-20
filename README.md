@@ -19,11 +19,11 @@
 
 LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, iPadOS, macOS, tvOS and watchOS).
 
-You can define licenses with code that is compiled into the product binary, read licenses from files, validate licenses from remote APIs, integrate with services like Gumroad, etc. 
+LicenseKit lets you define licenses with code that is compiled into the product binary, read licenses from files, validate licenses from remote APIs, integrate with external services like Gumroad, etc.
 
-Licenses can specify and validate expiration date, platform (iOS, iPadOS, macOS, watchOS, etc.), bundle ID, tier, environment, features, and much more.
+LicenseKit licenses can specify and validate expiration date, platform, bundle ID, tier, environment, features, and much, much more.
 
-LicenseKit supports iOS 15, macOS 13, tvOS 15 and watchOS 8.
+LicenseKit lets you cache validation results to handle temporary connectivity loss, and use service proxying to use multiple services to validate license keys. 
 
 
 
@@ -51,9 +51,7 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 The [online documentation][Documentation] has a [getting-started guide][Getting-Started] that helps you get started with LicenseKit.
 
-In LicenseKit, a ``LicenseEngine`` is used to manage your product licenses.
-
-Use *your* LicenseKit license key to create a ``LicenseEngine``, then define which license service to use.
+In LicenseKit, a ``LicenseEngine`` is used to manage your product licenses. Use *your* LicenseKit license key to create a ``LicenseEngine``, then define which license service to use.
 
 Here, we use the "FREE" LicenseKit license key to create an license engine that uses a `.binary` service with hard-coded licenses:
 
@@ -68,9 +66,9 @@ let engine = try await LicenseEngine(licenseKey: "Your license key") {
 }
 ```
 
-The engine will use the service(s) you specified to get the license, and will by default validate the license for the current platform, bundle and date before returning it.
+The engine will use the service you specified to get the license, and will by default validate the license for the current platform, product bundle and date before returning it. You can perform more validations after retrieving the license.
 
-You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, etc.  
+You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, `.cached`, and `.proxy` to create a service configuration that suits your needs.  
 
 For more information, please see the [online documentation][Documentation] and the [getting started guide][Getting-Started].
 
