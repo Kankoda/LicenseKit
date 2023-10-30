@@ -1,19 +1,67 @@
 # Release Notes
 
-LicenseKit tries to honor semantic versioning:
+LicenseKit honors semantic versioning to great extent:
 
 * Only remove deprecated code in `major` versions.
 * Only deprecate code in `minor` and `patch` versions.
 * Avoid breaking changes in `minor` and `patch` versions.
 * Code can be marked as deprecated at any time.
 
-Breaking changes can occur in minor versions and patches, if
-the alternative is to not be able to release new features or
-fixes that are critical or provide important value.
+Breaking changes *can* still occur in minor versions and patches, if the alternative is to not be able to release important new features or fixes.
 
-These release notes only include functional changes. They do
-not cover license changes, which means that there may be new
-versions that are not listed here.
+
+
+## 0.9
+
+This version adds Gumroad license mapping and replaces Small, Medium and Large licenses with Gold, Silver and Large.
+
+ ### ✨ New Features
+
+* `License` properties are now mutable.
+* `License` has a new `hasFeature` function.
+* `License` can now validate bundle ID string.
+* `LicenseEngine` now uses a Gulroad service that properly maps bundle IDs.
+* `LicenseError` now implements `LocalizedError` to return readable errors.
+* `LicenseError` has a new `missingLicenseInCache` to support distring errors.
+* `LicenseError.invalidLicenseKey` now supports specifying a custom error message.
+
+### 💡 Adjustments
+
+* `License` now also validates platform instead of just bundle and date.
+* `LicenseEngine` now throws valid errors when failing to resolve service.
+* `LicenseServiceType.gumroad` now maps e-mail to name if name is missing.
+* `LicenseServiceType.gumroad` now uses iOS 14 supporting ISO date parsing.
+
+### 💥 Breaking changes
+
+* `ApiConfiguration` is moved to `LicenseIntegrations`.
+* `LicenseFeature.featureId` is now optional to be more flexible.
+* `LicenseFeature` has a new, optional `unlockedByTier` property.
+* `LicenseService` is now internal to clean up and minimize the library.
+* `LicenseServiceType.proxy` now uses a `LicenseServiceType` instead of a service.
+
+
+
+## 0.8
+
+This version adds capabilities that unlock monthly subscriptions for LicenseKit.
+
+### ✨ New Features
+
+* `Gumroad.Purchase` now has default parsed `license` properties.
+* `LicenseEngine` can now be created with a Gumroad license key.
+* `LicenseServiceType` cases no longer need a license to be used.
+* `LicenseServiceType.api` and `.gumroad` has new `cached` capabilities.
+
+### 💡 Adjustments
+
+* The license tiers and their capabilities have been tweaked.
+
+### 💥 Breaking changes
+
+* The `LicenseEngine` initializer is now async to support Gumroad.
+* The `LicenseEngine` service builder is no longer given the license.
+* The `LicenseServiceType` cases no longer need a license to be used.
 
 
 
