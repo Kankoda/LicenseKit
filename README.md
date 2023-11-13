@@ -4,13 +4,9 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/LicenseKit/LicenseKit?color=%2300550&sort=semver" alt="Version" />
-    <img src="https://img.shields.io/badge/Swift-5.7-orange.svg" alt="Swift 5.7" />
-    <a href="https://twitter.com/getlicensekit">
-        <img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fgetlicensekit" alt="Twitter: @getlicensekit" title="Twitter: @getlicensekit" />
-    </a>
-    <a href="https://techhub.social/@licensekit">
-        <img src="https://img.shields.io/mastodon/follow/109340846532086151?domain=https%3A%2F%2Ftechhub.social&label=Mastodon&style=social" alt="Mastodon: @licensekit@techhub.social" title="Mastodon: @licensekit@techhub.social" />
-    </a>
+    <img src="https://img.shields.io/badge/Swift-5.8-orange.svg" alt="Swift 5.8" />
+    <a href="https://twitter.com/kankodahq"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fkankodahq" alt="Twitter: @kankodahq" title="Twitter: @kankodahq" /></a>
+    <a href="https://mastodon.social/@kankoda"><img src="https://img.shields.io/mastodon/follow/110888068770108814?domain=https%3A%2F%2Fmastodon.social&label=Mastodon&style=social" alt="Mastodon: @kankoda@mastodon.social" title="Mastodon: @kankoda@mastodon.social" /></a>
 </p>
 
 
@@ -32,7 +28,7 @@ LicenseKit also lets you cache validation results to handle temporary connectivi
 LicenseKit can be installed with the Swift Package Manager:
 
 ```
-https://github.com/LicenseKit/LicenseKit.git
+https://github.com/Kankoda/LicenseKit.git
 ```
 
 LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package.
@@ -81,12 +77,14 @@ The demo app lets you try out the library on iOS and macOS. Just open and run th
 
 ## Contact
 
-Reach out if you have any questions or need help any way:
+LicenseKit is handled by Kankoda:
 
 * [Website][Website]
 * [Mastodon][Mastodon]
 * [Twitter][Twitter]
 * [E-mail][Email]
+
+Reach out if you have any questions or need help any way.
 
 
 
@@ -101,9 +99,9 @@ LicenseKit is closed source. See the [LICENSE][License] file for more info.
 [Twitter]: https://twitter.com/kankodahq
 [Mastodon]: https://mastodon.social/@kankoda
 
-[Documentation]: https://licensekit.github.io/LicenseKit/documentation/licensekit/
-[Getting-Started]: https://licensekit.github.io/LicenseKit/documentation/licensekit/getting-started
-[License]: https://github.com/LicenseKit/LicenseKit/blob/main/LICENSE
+[Documentation]: https://kankoda.github.io/LicenseKit/documentation/licensekit
+[Getting-Started]: https://kankoda.github.io/LicenseKit/documentation/licensekit/getting-started
+[License]: https://github.com/Kankoda/LicenseKit/blob/main/LICENSE
 
 [Licenses]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-licenses
 [License-Errors]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-license-errors
