@@ -39,7 +39,7 @@ LicenseKit only has to be added to the main app target. If you are using License
 
 LicenseKit provides a bunch of license-specific features:
 
-* 📜 [License][Licenses] - LicenseKit defines a versatile license model.
+* ✅ [License Validation][Licenses] - LicenseKit can validate licenses in many ways.
 * ⌨️ [Binary Licenses][License-Services] - LicenseKit lets you define licenses with source code.
 * 📄 [File-Based Licenses][License-Services] - LicenseKit lets you define licenses with plain text files.
 * 🌩️ [API/Cloud-Based Licenses][License-Services] - LicenseKit can validate licenses with web requests.
