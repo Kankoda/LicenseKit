@@ -11,11 +11,17 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 0.9.1
+
+This version improves the cached license service performance.
+
+
+
 ## 0.9
 
 This version adds Gumroad license mapping and replaces Small, Medium and Large licenses with Gold, Silver and Large.
 
- ### ✨ New Features
+### ✨ New Features
 
 * `License` properties are now mutable.
 * `License` has a new `hasFeature` function.
