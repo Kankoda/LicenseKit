@@ -11,6 +11,17 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 0.9.2
+
+This version adds support for strict concurrency and visionOS.
+
+### ✨ New Features
+
+* `License.Environment` now supports custom values.
+* `License.Platform` now supports custom values and visionOS.
+
+
+
 ## 0.9.1
 
 This version improves the cached license service performance.

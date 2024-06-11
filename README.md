@@ -4,7 +4,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/LicenseKit/LicenseKit?color=%2300550&sort=semver" alt="Version" />
-    <img src="https://img.shields.io/badge/Swift-5.8-orange.svg" alt="Swift 5.8" />
+    <img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift 5.9" />
     <a href="https://twitter.com/kankodahq"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fkankodahq" alt="Twitter: @kankodahq" title="Twitter: @kankodahq" /></a>
     <a href="https://mastodon.social/@kankoda"><img src="https://img.shields.io/mastodon/follow/110888068770108814?domain=https%3A%2F%2Fmastodon.social&label=Mastodon&style=social" alt="Mastodon: @kankoda@mastodon.social" title="Mastodon: @kankoda@mastodon.social" /></a>
 </p>
@@ -13,13 +13,13 @@
 
 ## About LicenseKit
 
-A ``License`` represents a software license that can be resolved with a license key.
+LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, macOS, tvOS, watchOS, and visionOS).
 
-LicenseKit licenses (see <doc:Understanding-Licenses>) can specify and validate expiration date, platform, bundle ID, tier, environment, features, and much, much more.
+LicenseKit [licenses][Licenses] can specify and validate expiration date, platform, bundle ID, tier, environment, features, and much, much more.
 
-LicenseKit uses services (see <doc:Understanding-License-Services>) to compile licenses into the product binary, read licenses from files, fetch licenses from remote APIs, integrate with external services like Gumroad, etc.
+LicenseKit has different [services][License-Services] that can validate code-based licenses, read licenses from files, validate licenses from remote APIs, integrate with services like Gumroad, etc.
 
-LicenseKit also lets you cache validation results to handle temporary connectivity loss, and use service proxying to use multiple services to validate license keys.
+LicenseKit lets you cache validation results to handle temporary connectivity loss, and use service proxying to use multiple services to validate license keys. 
 
 
 
@@ -51,7 +51,26 @@ LicenseKit provides a bunch of license-specific features:
 
 ## Getting started
 
-The [online documentation][Documentation] has a [getting-started guide][Getting-Started] that helps you get started.
+In LicenseKit, a `LicenseEngine` is used to manage your product licenses, with one or several validation services. 
+
+Use *your* LicenseKit license key to create a ``LicenseEngine``, then define which license service to use.
+
+Here, we use the "FREE" license key to create an engine that uses a `.binary` service with two hard-coded licenses:
+
+```swift
+let engine = try await LicenseEngine(licenseKey: "FREE") {
+    .binary(
+        licenses: [
+            License(licenseKey: "license-key-1"),
+            License(licenseKey: "license-key-2")
+        ]
+    )
+}
+```
+
+You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, `.cached`, and `.proxy` to create a service configuration that suits your needs.
+
+See the [getting-started guide][Getting-Started] for more information.
 
 
 
