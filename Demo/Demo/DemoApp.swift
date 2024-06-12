@@ -27,7 +27,7 @@ struct DemoApp: App {
             HomeScreen()
                 .environmentObject(context)
                 .onAppear(perform: tryRegisterDemoPackageLicense)
-                .task(tryRegisterAppLicense)
+                .task { await tryRegisterAppLicense() }
         }
     }
 }
@@ -77,7 +77,6 @@ private extension DemoApp {
      would have been provided to users as they signed up for
      an app license.
      */
-    @Sendable
     func tryRegisterAppLicense() async {
         context.licenseEngine = try? await LicenseEngine(licenseKey: appLicenseKey) {
             .binary(
