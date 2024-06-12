@@ -1,5 +1,5 @@
 <p align="center">
-    <img src ="Resources/Logo_GitHub.png" alt="LicenseKit Logo" title="LicenseKit" width=600 />
+    <img src ="Resources/Logo_GitHub.png" alt="LicenseKit Logo" title="LicenseKit" />
 </p>
 
 <p align="center">
