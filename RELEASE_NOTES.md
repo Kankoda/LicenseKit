@@ -11,6 +11,17 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 1.0
+
+This version bumps to Swift 6 and removes all previously deprecated code.
+
+### ✨ New Features
+
+* `License` has new expiration properties.
+* `License` and all subtypes now implement `Hashable` and `Sendable`.
+ 
+
+
 ## 0.9.2
 
 This version adds support for strict concurrency and visionOS.
