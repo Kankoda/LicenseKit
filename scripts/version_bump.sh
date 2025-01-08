@@ -2,7 +2,7 @@
 
 # Documentation:
 # This script bumps the project version number.
-# You can use the --no-semver argument to disable semantic version validation.
+# You can append --no-semver to disable semantic version validation.
 
 # Usage:
 # version_bump.sh [--no-semver]
