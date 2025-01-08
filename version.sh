@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Documentation:
-# This script creates a new version tag for the project.
+# This script creates a new package version tag.
 
-NAME="LicenseKit"
 SCRIPT="scripts/version_bump.sh"
-chmod +x $SCRIPT
-bash $SCRIPT
+chmod +x $SCRIPT & bash $SCRIPT
