@@ -11,6 +11,14 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 1.0.1
+
+### ✨ New Features
+
+* `License` has new matching and sorting functionality.
+ 
+
+
 ## 1.0
 
 This version bumps to Swift 6 and removes all previously deprecated code.
