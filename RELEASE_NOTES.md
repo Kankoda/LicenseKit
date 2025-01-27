@@ -11,6 +11,14 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 1.0.2
+
+### 💡 Adjustments
+
+* `License.allowsExpiration` is now `false` by default.
+ 
+
+
 ## 1.0.1
 
 ### ✨ New Features
