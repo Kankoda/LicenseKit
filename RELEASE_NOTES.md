@@ -18,7 +18,6 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 * `License` has a new `renewalDate` property.
 * `License.Customer` has a new `fullName` property.
 
-
 ### 💡 Adjustments
 
 * `License.allowsExpiration` is now `false` by default.
