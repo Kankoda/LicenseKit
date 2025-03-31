@@ -20,13 +20,13 @@ class DemoLicenseContext: ObservableObject {
     var appLicense: License?
     
     @Published
-    var appLicenseError: LicenseError?
+    var appLicenseError: License.ValidationError?
     
     @Published
     var demoPackageLicense: License?
     
     @Published
-    var demoPackageLicenseError: LicenseError?
+    var demoPackageLicenseError: License.ValidationError?
     
     /**
      This app-specific license engine is used by the app, to

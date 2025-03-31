@@ -95,7 +95,7 @@ private extension HomeScreen {
     }
 
     @ViewBuilder
-    func text(for error: LicenseError?) -> some View {
+    func text(for error: License.ValidationError?) -> some View {
         if let error = error {
             Text("ERROR: \(error.displayName)")
                 .frame(maxWidth: .infinity)
@@ -130,7 +130,7 @@ private extension HomeScreen {
                     .getLicense(withKey: appLicenseKey)
                 updateContext(with: license)
             } catch {
-                updateContext(with: error as? LicenseError)
+                updateContext(with: error as? License.ValidationError)
             }
         }
     }
@@ -143,7 +143,7 @@ private extension HomeScreen {
         context.appLicense = license
     }
     
-    func updateContext(with error: LicenseError?) {
+    func updateContext(with error: License.ValidationError?) {
         context.appLicenseError = error
     }
 }

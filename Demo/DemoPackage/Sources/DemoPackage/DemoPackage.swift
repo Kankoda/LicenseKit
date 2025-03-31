@@ -58,7 +58,7 @@ public final class DemoPackage {
      to validate that a valid license key is registered.
      */
     public static func validateCustomerLicense() throws {
-        guard let license = customerLicense else { throw LicenseError.missingLicense }
+        guard let license = customerLicense else { throw License.ValidationError.missingLicense }
         try license.validate()
     }
 }
@@ -78,7 +78,7 @@ private extension DemoPackage {
                 licenses: [.demoLicense(method: "local")]
             )
         case .file:
-            return .file(
+            return .fileName(
                 fileName: "licenses",
                 fileExtension: "txt",
                 bundle: .demoPackage,

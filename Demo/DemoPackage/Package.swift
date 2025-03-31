@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         //.package(name: "LicenseKit", path: "../../"),
         //.package(name: "LicenseKit", path: "../../licensekitsource"),
-        .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "0.7.0"))
+        .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "1.1.0"))
     ],
     targets: [
         .target(

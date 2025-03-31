@@ -58,7 +58,7 @@ private extension DemoApp {
                     source: packageLicenseSource)
                 updateContext(with: license)
             } catch {
-                updateContext(with: error as? LicenseError)
+                updateContext(with: error as? License.ValidationError)
             }
         }
     }
@@ -105,7 +105,7 @@ private extension DemoApp {
         context.demoPackageLicense = license
     }
     
-    func updateContext(with error: LicenseError?) {
+    func updateContext(with error: License.ValidationError?) {
         context.demoPackageLicenseError = error
     }
 }
