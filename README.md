@@ -1,17 +1,17 @@
 <p align="center">
-    <img src ="Resources/Logo_GitHub.png" alt="LicenseKit Logo" title="LicenseKit" />
+    <img src="Resources/Icon.png" alt="Project Icon" width="250" />
 </p>
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/LicenseKit/LicenseKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
-    <a href="https://twitter.com/kankodahq"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fkankodahq" alt="Twitter: @kankodahq" title="Twitter: @kankodahq" /></a>
-    <a href="https://mastodon.social/@kankoda"><img src="https://img.shields.io/mastodon/follow/110888068770108814?domain=https%3A%2F%2Fmastodon.social&label=Mastodon&style=social" alt="Mastodon: @kankoda@mastodon.social" title="Mastodon: @kankoda@mastodon.social" /></a>
+    <a href="https://kankoda.github.io/LicenseKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
+    <img src="https://img.shields.io/badge/license-commercial-yellow.svg" alt="Documentation" />
 </p>
 
 
 
-## About LicenseKit
+# LicenseKit
 
 LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, macOS, tvOS, watchOS, and visionOS).
 
@@ -31,7 +31,7 @@ LicenseKit can be installed with the Swift Package Manager:
 https://github.com/Kankoda/LicenseKit.git
 ```
 
-LicenseKit only has to be added to the main app target. If you are using LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package.
+LicenseKit only has to be linked to the main target. If you use LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package.
 
 
 
@@ -98,10 +98,10 @@ The demo app lets you try out the library on iOS and macOS. Just open and run th
 
 LicenseKit is handled by Kankoda:
 
-* [Website][Website]
-* [Mastodon][Mastodon]
-* [Twitter][Twitter]
 * [E-mail][Email]
+* [Website][Website]
+* [Bluesky][Bluesky]
+* [Mastodon][Mastodon]
 
 Reach out if you have any questions or need help any way.
 
@@ -115,6 +115,9 @@ LicenseKit is closed source. See the [LICENSE][License] file for more info.
 
 [Email]: mailto:info@kankoda.com
 [Website]: https://kankoda.com/licensekit
+[GitHub]: https://github.com/kankoda
+
+[Bluesky]: https://bsky.app/profile/kankoda.bsky.social
 [Twitter]: https://twitter.com/kankodahq
 [Mastodon]: https://mastodon.social/@kankoda
 
