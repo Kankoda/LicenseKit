@@ -11,6 +11,20 @@ Breaking changes *can* still occur in minor versions and patches, if the alterna
 
 
 
+## 1.2
+
+### ✨ New Features
+
+* `License` has a new, static validication function.
+* `LicenseStore` is a new way to store a single license.
+* `LicenseEngine` can now be created with a license store.
+
+### 💡 Adjustments
+
+* `License.ValidationError` has renamed multiple error types.
+ 
+
+
 ## 1.1
 
 ### ✨ New Features
