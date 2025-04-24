@@ -1,14 +1,15 @@
 {
+  "originHash" : "06cca5813ecd8c77cf31a4136e7705c2ec0c503f5e867e12a58e2b800b39a2c2",
   "pins" : [
     {
       "identity" : "licensekit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LicenseKit/LicenseKit",
       "state" : {
-        "revision" : "14cd1d185507c61006d50e3e52fc06486b05b562",
-        "version" : "1.2.2"
+        "revision" : "3cb10784c958a0730b35ba0506dcb1004f86e2bb",
+        "version" : "1.2.4"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
