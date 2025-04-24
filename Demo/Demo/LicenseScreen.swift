@@ -9,6 +9,7 @@
 import LicenseKit
 import SwiftUI
 
+/// This screen is used to display licenses for the demo app.
 struct LicenseScreen: View {
     
     let license: License

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LicenseKit/LicenseKit",
       "state" : {
-        "revision" : "457ce817dbceec94634550b0b1cbc6da2b0f1fba",
-        "version" : "0.7.0"
+        "revision" : "14cd1d185507c61006d50e3e52fc06486b05b562",
+        "version" : "1.2.2"
       }
     }
   ],

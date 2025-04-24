@@ -13,11 +13,17 @@
 
 # LicenseKit
 
-LicenseKit lets you protect your software with commercial licenses on major Apple platforms (iOS, macOS, tvOS, watchOS & visionOS). You can use it with boths apps and libraries, to require users to purchase a license in order to use your software.
+LicenseKit lets you protect your software with commercial licenses on major Apple platforms (iOS, macOS, tvOS, watchOS & visionOS). You can use it with boths apps and libraries, to require a license to use your software.
 
 LicenseKit lets you define licenses with code, read licenses from plain and encrypted files, validate licenses from an API, and integrate with external services like Gumroad, etc. 
 
-LicenseKit can validate expiration date, platform, bundle ID, tier, environment, features, and much more. It also lets you cache licenses to handle temporary connectivity loss, and combine multiple data sources for flexible and thread-safe license validation.
+LicenseKit can validate expiration date, platform, bundle ID, tier, environment, features, and much more. It lets you cache licenses to handle temporary connectivity loss, and combine multiple data sources for flexible validation.
+
+
+
+## Pricing
+
+LicenseKit requires a commercial license to be used. It's free to start using, using the limited "FREE" license key, and affordable to scale. You can purchase a license or try out a free, unlimited trial from the [LicenseKit website][Website].
 
 
 
@@ -29,7 +35,7 @@ LicenseKit can be installed with the Swift Package Manager:
 https://github.com/Kankoda/LicenseKit.git
 ```
 
-LicenseKit only has to be linked to the main target. If you use LicenseKit with a library, make sure to set up your Swift package so that your users get both your library and LicenseKit when fetching your package.
+LicenseKit only has to be linked to the main target. If you use LicenseKit with a Swift package, make sure to set up your package to fetch both your library and LicenseKit.
 
 
 
@@ -38,45 +44,40 @@ LicenseKit only has to be linked to the main target. If you use LicenseKit with 
 LicenseKit provides a bunch of license-specific features:
 
 * ✅ [License Validation][Licenses] - LicenseKit can validate licenses in many ways.
-* ⌨️ [Binary Licenses][License-Services] - LicenseKit lets you define licenses with source code.
-* 📄 [File-Based Licenses][License-Services] - LicenseKit lets you define licenses with plain text files.
-* 🌩️ [API/Cloud-Based Licenses][License-Services] - LicenseKit can validate licenses with web requests.
-* 💰 [Gumroad][License-Services] - LicenseKit can integrate directly with Gumroad.
-* 📦 [License Caching][License-Services] - LicenseKit can cache successful license validations.
-* ➡️ [Service Proxying][License-Services] - LicenseKit can chain multiple services together.
+* ⌨️ [Binary Licenses][Services] - LicenseKit lets you define licenses with source code.
+* 📄 [File-Based Licenses][Services] - LicenseKit lets you define licenses with plain text files.
+* 🌩️ [API/Cloud-Based Licenses][Services] - LicenseKit can validate licenses with web requests.
+* 💰 [Gumroad][Services] - LicenseKit can integrate directly with Gumroad.
+* 📦 [License Caching][Services] - LicenseKit can cache successful license validations.
+* ➡️ [Service Proxying][Services] - LicenseKit can chain multiple services together.
 
 
 
 ## Getting started
 
-In LicenseKit, a `LicenseEngine` is used to manage your product licenses, with one or several validation services. 
+With LicenseKit, your app/library should create a ``LicenseEngine`` with the license key you obtain when signing up for LicenseKit, and define which ``LicenseServiceType`` you want to use to use to fetch customer licenses.
 
-Use *your* LicenseKit license key to create a ``LicenseEngine``, then define which license service to use.
-
-Here, we use the "FREE" license key to create an engine that uses a `.binary` service with two hard-coded licenses:
+For instance, this would create a license engine with two licenses that are defined with source code and that will be validated on-device:
 
 ```swift
-let engine = try await LicenseEngine(licenseKey: "FREE") {
-    .binary(
-        licenses: [
-            License(licenseKey: "license-key-1"),
-            License(licenseKey: "license-key-2")
-        ]
-    )
-}
+let licenseEngine = try await LicenseEngine(
+    licenseKey: "your-license-key",
+    licenseStore: .myInternalLicenseStore // optional
+    licenseService: { .binary(
+            licenses: [
+                License(licenseKey: "license-key-1", ...),
+                License(licenseKey: "license-key-2", ...)
+            ]
+        )
+    }
+)
 ```
 
-You can choose from many different service types, such as `.binary`, `.file`, `.api`, `.gumroad`, `.cached`, and `.proxy` to create a service configuration that suits your needs.
+There are many service types to choose from, as described in the [license services article][Services]. You can define licenses with source code, read licenses from file, fetch licenses from an API, integrate with services like Gumroad, etc.
 
-See the [getting-started guide][Getting-Started] for more information.
+Once you have a license engine, you can use it to resolve and validate licenses for your product, by letting users enter *their* license key.
 
-
-
-## Pricing
-
-LicenseKit requires a commercial license to be used. It's free to start using and affordable to scale.
-
-You can purchase a license or try out the free, unlimited trial from the [LicenseKit website][Website].
+See the [getting-started guide][Getting-Started] for more information, and for how to set up license activation for apps and libraries.
 
 
 
@@ -120,9 +121,8 @@ LicenseKit is closed source. See the [LICENSE][License] file for more info.
 [Mastodon]: https://mastodon.social/@kankoda
 
 [Documentation]: https://kankoda.github.io/LicenseKit/documentation/licensekit
-[Getting-Started]: https://kankoda.github.io/LicenseKit/documentation/licensekit/getting-started
+[Getting-Started]: https://kankoda.github.io/LicenseKit/documentation/licensekit/getting-started-article
 [License]: https://github.com/Kankoda/LicenseKit/blob/main/LICENSE
 
 [Licenses]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-licenses
-[License-Errors]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-license-errors
-[License-Services]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-license-services
+[Services]: https://kankoda.github.io/LicenseKit/documentation/licensekit/understanding-services

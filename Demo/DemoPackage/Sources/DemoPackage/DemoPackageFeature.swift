@@ -3,24 +3,21 @@
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-02-11.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2025 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
+import LicenseKit
 
-/**
- This class represents a license-protected package feature.
- 
- Whenever you try to create an instance of this feature from
- the demo app, the initializer will check that a license has
- been properly registered. If not, the initializer will fail.
- */
+/// This class represents a license protected feature, which
+/// requires that the app has a valid license.
 public class DemoPackageFeature {
     
-    /**
-     Create an instance of the demo feature.
-     */
+    /// Create an instance of the demo feature.
+    ///
+    /// This initializer validates that this app has a valid
+    /// license. If not, the initializer will throw an error.
     public init() throws {
-        try DemoPackage.validateCustomerLicense()
+        try License.validate(.current)
     }
 }

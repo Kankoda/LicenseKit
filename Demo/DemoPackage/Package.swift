@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:6.0
 
 import PackageDescription
 
@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         //.package(name: "LicenseKit", path: "../../"),
         //.package(name: "LicenseKit", path: "../../licensekitsource"),
-        .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "1.1.0"))
+        .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "1.2.2"))
     ],
     targets: [
         .target(

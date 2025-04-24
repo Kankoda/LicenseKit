@@ -3,24 +3,22 @@
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-08-21.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2025 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
 
 extension Bundle {
 
-    /**
-     The name of the package bundle, which may change in new
-     Xcode versions.
-
-     If the Xcode name convention changes, you can print the
-     path like this and look for the bundle name in the text:
-
-     ```
-     Bundle(for: BundleFinder.self).resourceURL?.deletingLastPathComponent().deletingLastPathComponent()
-     ```
-     */
+    /// The name of the package bundle. This may change in a
+    /// future Xcode update.
+    ///
+    /// If the Xcode name convention changes, just print the
+    /// new path and look for the bundle name in the text:
+    ///
+    /// ```
+    /// Bundle(for: BundleFinder.self).resourceURL?.deletingLastPathComponent().deletingLastPathComponent()
+    /// ```
     static let demoPackageBundleName = "DemoPackage_DemoPackage"
 
     /**

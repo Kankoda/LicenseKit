@@ -14,27 +14,23 @@ struct HomeScreen: View {
     
     init() {
         do {
-            demoPackageFeature = try DemoPackageFeature()
+            /// Try to resolve a demo package feature, which
+            /// requires that the app has a valid license.
+            packageFeature = try DemoPackageFeature()
         } catch {
-            demoPackageFeature = nil
-            print("The license protected feature could not be created due to a license error: \(error).")
+            packageFeature = nil
+            print("The package feature threw an error: \(error).")
         }
     }
     
-    /**
-     This license-protected feature can only be created when
-     the app has successfully registered a license that lets
-     it use the DemoPackage library.
-     */
-    private let demoPackageFeature: DemoPackageFeature?
+    private let packageFeature: DemoPackageFeature?
     
     @State
-    private var appLicenseKey = "4B142177-214B-447F-9E57-8E906DE6FCFC"
-    
+    private var appLicenseKey = DemoApp.appLicenseKey
+
     @EnvironmentObject
-    private var context: DemoLicenseContext
-    
-    
+    private var context: DemoContext
+
     var body: some View {
         NavigationView {
             List {
@@ -49,11 +45,22 @@ struct HomeScreen: View {
 
 private extension HomeScreen {
     
+    var packageLicenseSection: some View {
+        Section(header: Text("Demo Package License"), footer: Text("This license is defined in the demo package. The app registers it on launch.")) {
+            StatusListItem(status: context.hasPackageLicense, title: "Has valid package license")
+            StatusListItem(status: packageFeature != nil, title: "Can access package feature")
+            if let license = context.packageLicense {
+                LicenseLink(license: license)
+            }
+            text(for: context.packageLicenseError)
+        }
+    }
+
     var appLicenseSection: some View {
         Group {
-            Section(header: Text("App License"), footer: Text("This license is defined in the app. Register it to unlock the app.")) {
-                appLicenseKeyTextField
-                StatusListItem(status: hasAppLicense, title: "Has valid app license")
+            Section(header: Text("App License"), footer: Text("This license is defined in the app. Register it by tapping the button below.")) {
+                TextField("Enter app license key", text: $appLicenseKey)
+                StatusListItem(status: context.hasAppLicense, title: "Has valid app license")
                 if let license = context.appLicense {
                     LicenseLink(license: license)
                 }
@@ -62,17 +69,6 @@ private extension HomeScreen {
             Section(footer: text(for: context.appLicenseError)) {
                 appLicenseRegisterButton
             }
-        }
-    }
-    
-    var packageLicenseSection: some View {
-        Section(header: Text("Demo Package License"), footer: Text("This license is defined in the demo library. The app registers it as it launches.")) {
-            StatusListItem(status: hasDemoPackageLicense, title: "Has valid package license")
-            StatusListItem(status: hasDemoPackageFeature, title: "Can access package feature")
-            if let license = context.demoPackageLicense {
-                LicenseLink(license: license)
-            }
-            text(for: context.demoPackageLicenseError)
         }
     }
 }
@@ -89,10 +85,6 @@ private extension HomeScreen {
         .listRowInsets(EdgeInsets())
         .listRowBackground(Color.clear)
     }
-    
-    var appLicenseKeyTextField: some View {
-        TextField("Enter app license key", text: $appLicenseKey)
-    }
 
     @ViewBuilder
     func text(for error: License.ValidationError?) -> some View {
@@ -105,45 +97,17 @@ private extension HomeScreen {
 }
 
 private extension HomeScreen {
-    
-    var hasAppLicense: Bool {
-        context.appLicense != nil
-    }
 
-    var hasDemoPackageFeature: Bool {
-        demoPackageFeature != nil
-    }
-    
-    var hasDemoPackageLicense: Bool {
-        context.demoPackageLicense != nil
-    }
-}
-
-private extension HomeScreen {
-    
     func registerAppLicenseKey() {
         Task {
             do {
                 context.appLicense = nil
                 context.appLicenseError = nil
-                let license = try await context.licenseEngine?
-                    .getLicense(withKey: appLicenseKey)
-                updateContext(with: license)
+                let license = try await LicenseEngine.getAppLicense(withLicenseKey: appLicenseKey)
+                context.appLicense = license
             } catch {
-                updateContext(with: error as? License.ValidationError)
+                context.appLicenseError = error as? License.ValidationError
             }
         }
-    }
-}
-
-@MainActor
-private extension HomeScreen {
-    
-    func updateContext(with license: License?) {
-        context.appLicense = license
-    }
-    
-    func updateContext(with error: License.ValidationError?) {
-        context.appLicenseError = error
     }
 }

@@ -3,80 +3,72 @@
 //  DemoPackage
 //
 //  Created by Daniel Saidi on 2022-02-11.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2025 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
 import LicenseKit
 
-/**
- This is the central class in the demo library. It's used to
- set up the library with a customer license key that unlocks
- protected features in the library.
-
- This class uses LicenseKit to create a `LicenseEngine` that
- is then used to register the provided customer license key.
- */
+/// This is the central class within the demo library. It is
+/// used to set up the library with any customer license key
+/// that unlocks protected features in the library.
 public final class DemoPackage {
 
-    // This engine is created in the setup function.
-    static var engine: LicenseEngine!
-
-    // This license is registered in the setup function.
-    static var customerLicense: License!
-    
-    /**
-     This function should be called by apps and libraries to
-     set up this package with a customer license.
-     */
+    /// This function must be called by the demo app, to set
+    /// up the library and unlock its features.
     public static func setup(
-        withLicenseKey key: String,
+        withLicenseKey customerLicenseKey: String,
         source: License.Source
     ) async throws -> License {
-        
-        // This key grants this library access to LicenseKit
-        let licenseKitLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
-        
-        // Try to setup a locale license engine with the key
-        let engine = try await LicenseEngine(licenseKey: licenseKitLicenseKey) {
-            licenseRegistrationService(for: source)
+
+        // Try to create a license engine with a license key
+        // and a license store, using a source-based service.
+        let licenseEngine = try await LicenseEngine(
+            licenseKey: DemoPackage.productLicenseKey,
+            licenseStore: LicenseStore.demo
+        ) {
+            licenseService(for: source)
         }
         
-        // Try to validate provided license key
-        let license = try await engine.getLicense(withKey: key)
-        
-        // Set the private engine and license for later use
-        Self.engine = engine
-        Self.customerLicense = license
-        
-        // Return the customer license to the user
+        // Try to get a license for the provided license key.
+        let license = try await licenseEngine.getLicense(
+            withKey: customerLicenseKey
+        )
+
+        // Return the customer license. This license is also
+        // auto-stored in the license store by the engine.
         return license
     }
-    
-    /**
-     This function is used by the library's various features
-     to validate that a valid license key is registered.
-     */
-    public static func validateCustomerLicense() throws {
-        guard let license = customerLicense else { throw License.ValidationError.missingLicense }
-        try license.validate()
-    }
+}
+
+extension DemoPackage {
+
+    // This is an app-specific license key that's defined in
+    // the demo package and can only be used by the demo app,
+    // to unlock features in the package.
+    static let packageLicenseKey = "6A34BED3-5A7F-44B9-A3C6-3415463C4D0B"
+
+    // This is a product-specific license key that's defined
+    // in LicenseKit and can be used by both the package and
+    // the app to unlock features in LicenseKit.
+    static let productLicenseKey = "299B33C6-061C-4285-8189-90525BCAF098"
 }
 
 private extension DemoPackage {
 
-    /**
-     Create a license registration service with the provided
-     customer license and source.
-     */
-    static func licenseRegistrationService(
+    /// Create a license service for the provided source.
+    static func licenseService(
         for source: License.Source
     ) -> LicenseServiceType {
         switch source {
+
+        /// Binary licenses are defined in `License+Demo`.
         case .binary:
             return .binary(
-                licenses: [.demoLicense(method: "local")]
+                licenses: [.packageLicense(method: "local")]
             )
+
+        /// File licenses are set in `Resources/licenses.txt`.
         case .file:
             return .fileName(
                 fileName: "licenses",
