@@ -11,9 +11,9 @@ These release notes cover the current major version. See older versions for olde
 
 
 
-## 1.2.3
+## 1.2.4
 
-This version replaces 1.2.1 and 1.2.2 due to git commit problems.
+This version replaces 1.2.1 - 1.2.3 due to git and SPM problems.
 
 This version removes `LicenseStore.shared` and adds a public `LicenseStore` initializer instead.
 
