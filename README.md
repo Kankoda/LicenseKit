@@ -13,13 +13,11 @@
 
 # LicenseKit
 
-LicenseKit helps you protect your software with commercial licenses on all major Apple platforms (iOS, macOS, tvOS, watchOS, and visionOS).
+LicenseKit lets you protect your software with commercial licenses on major Apple platforms (iOS, macOS, tvOS, watchOS & visionOS). You can use it with boths apps and libraries, to require users to purchase a license in order to use your software.
 
-LicenseKit [licenses][Licenses] can specify and validate expiration date, platform, bundle ID, tier, environment, features, and much, much more.
+LicenseKit lets you define licenses with code, read licenses from plain and encrypted files, validate licenses from an API, and integrate with external services like Gumroad, etc. 
 
-LicenseKit has different [services][License-Services] that can validate code-based licenses, read licenses from files, validate licenses from remote APIs, integrate with services like Gumroad, etc.
-
-LicenseKit lets you cache validation results to handle temporary connectivity loss, and use service proxying to use multiple services to validate license keys. 
+LicenseKit can validate expiration date, platform, bundle ID, tier, environment, features, and much more. It also lets you cache licenses to handle temporary connectivity loss, and combine multiple data sources for flexible and thread-safe license validation.
 
 
 
