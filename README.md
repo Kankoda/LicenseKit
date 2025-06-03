@@ -43,27 +43,33 @@ LicenseKit only has to be linked to the main target. If you use LicenseKit with 
 
 LicenseKit provides a bunch of license-specific features:
 
-* ✅ [License Validation][Licenses] - LicenseKit can validate licenses in many ways.
+* 🌩️ [API Licenses][Services] - LicenseKit can validate licenses with web requests.
 * ⌨️ [Binary Licenses][Services] - LicenseKit lets you define licenses with source code.
-* 📄 [File-Based Licenses][Services] - LicenseKit lets you define licenses with plain text files.
-* 🌩️ [API/Cloud-Based Licenses][Services] - LicenseKit can validate licenses with web requests.
-* 💰 [Gumroad][Services] - LicenseKit can integrate directly with Gumroad.
-* 📦 [License Caching][Services] - LicenseKit can cache successful license validations.
-* ➡️ [Service Proxying][Services] - LicenseKit can chain multiple services together.
+* 📄 [CSV Files][Services] - LicenseKit lets you define licenses with plain text files.
+* ⌨️ [Encrypted Files][Services] - LicenseKit lets you define licenses with source code.
+* 💰 [Gumroad Integration][Services] - LicenseKit can integrate directly with Gumroad.
+
+LicenseKit can also cache any service and combine multiple licenses:
+ 
+* 📦 [Caching][Services] - LicenseKit can cache valid licenses.
+* ➡️ [Proxying][Services] - LicenseKit can combine multiple services.
+
+See the [Understanding Licenses][Licenses] and [Understanding License Services][Services] articles for more information about licenses and services.
 
 
 
 ## Getting started
 
-With LicenseKit, your app/library should create a ``LicenseEngine`` with the license key you obtain when signing up for LicenseKit, and define which ``LicenseServiceType`` you want to use to use to fetch customer licenses.
+With LicenseKit, your app/library should create a ``LicenseEngine`` with the license key you obtain when you [sign up for LicenseKit][Website], then define which ``LicenseServiceType`` you want to use to use to fetch and validate customer licenses.
 
-For instance, this would create a license engine with two licenses that are defined with source code and that will be validated on-device:
+For instance, this would create a license engine with two licenses that are compiled into your product and will be validated on-device:
 
 ```swift
 let licenseEngine = try await LicenseEngine(
     licenseKey: "your-license-key",
     licenseStore: .myInternalLicenseStore // optional
-    licenseService: { .binary(
+    licenseService: { 
+        .binary(
             licenses: [
                 License(licenseKey: "license-key-1", ...),
                 License(licenseKey: "license-key-2", ...)
