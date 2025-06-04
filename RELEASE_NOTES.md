@@ -11,6 +11,20 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 1.3
+
+### ✨ New Features
+
+* `License` has a new, static `current(in:)` function.
+* `LicenseServiceType` has a new `encryptedLicenseFile` service type.
+
+### 💻 macOS Preview Apps
+
+* `LicenseFileDecryptorApp` is a new preview app that can decrypt encrypted files.
+* `LicenseManagerApp` is a new preview app that can list & manage licenses & services.
+
+
+
 ## 1.2.4
 
 This version replaces 1.2.1 - 1.2.3 due to git and SPM problems.

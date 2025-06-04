@@ -41,9 +41,9 @@ LicenseKit only has to be linked to the main target. If you use LicenseKit with 
 
 ## Features
 
-LicenseKit provides a bunch of license-specific features:
+LicenseKit makes it easy to define, fetch, and validate licenses in many different ways, for instance:
 
-* 🌩️ [API Licenses][Services] - LicenseKit can validate licenses with web requests.
+* 🌩️ [API Integrations][Services] - LicenseKit can validate licenses with web requests.
 * ⌨️ [Binary Licenses][Services] - LicenseKit lets you define licenses with source code.
 * 📄 [CSV Files][Services] - LicenseKit lets you define licenses with plain text files.
 * ⌨️ [Encrypted Files][Services] - LicenseKit lets you define licenses with source code.
