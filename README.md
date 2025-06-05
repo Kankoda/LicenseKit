@@ -49,13 +49,12 @@ For instance, this would create an engine with two licenses that are compiled in
 let licenseEngine = try await LicenseEngine(
     licenseKey: "your-license-key",
     licenseStore: .myInternalLicenseStore // optional
-    licenseService: { 
-        .binary(
-            licenses: [
-                License(licenseKey: "license-key-1", ...),
-                License(licenseKey: "license-key-2", ...)
-            ]
-        )
+    licenseService: { yourLicense in
+        .api(...)  // or...
+        .binary(...)  // or...
+        .csvFile(...)  // or...
+        .encryptedFile(...)  // or...
+        .gumroad(...)  // etc...
     }
 )
 ```

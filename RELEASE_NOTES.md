@@ -11,6 +11,16 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 1.4
+
+### ✨ New Features
+
+* `License` can now resolve Gumroad bundle IDs from more additional info keys.
+* `LicenseEngine` now pass in the engine license to the license service builder.
+* `LicenseEngine` can now take an optional bundle to look for a `LicenseKit.license` file.
+
+
+
 ## 1.3
 
 ### ✨ New Features
@@ -39,7 +49,7 @@ This version is also released as a multiplatform build.
 
 ### ✨ New Features
 
-* `License` has a new, static validiation function.
+* `License` has a new, static validication function.
 * `LicenseStore` is a new way to store a single license.
 * `LicenseEngine` can now be created with a license store.
 
