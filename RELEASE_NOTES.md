@@ -11,6 +11,14 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 1.4.1
+
+### 🐛 Bugs
+
+* `License.current(in:)` is now static, as intended.
+
+
+
 ## 1.4
 
 ### ✨ New Features
