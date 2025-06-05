@@ -39,7 +39,7 @@ This version is also released as a multiplatform build.
 
 ### ✨ New Features
 
-* `License` has a new, static validication function.
+* `License` has a new, static validiation function.
 * `LicenseStore` is a new way to store a single license.
 * `LicenseEngine` can now be created with a license store.
 
