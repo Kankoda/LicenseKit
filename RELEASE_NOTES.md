@@ -11,96 +11,23 @@ These release notes cover the current major version. See older versions for olde
 
 
 
-## 1.4.1
+## 2.0
+
+This version changes the license model, and removes unwanted types.
+
+### ✨ New Features
+
+* `Date+License` is now public.
+* `License` has a new `expirationProductVersion`.
+* `License.validate(...)` now allows optional values.
+* `License.validate(...)` now allows validating environment.
+* `License.validate(...)` now allows validating product version number.
 
 ### 🐛 Bugs
 
-* `License.current(in:)` is now static, as intended.
+* `License.validate(...)`  has been removed.
 
+### 💥 Breaking Changes
 
-
-## 1.4
-
-### ✨ New Features
-
-* `License` can now resolve Gumroad bundle IDs from more additional info keys.
-* `LicenseEngine` now pass in the engine license to the license service builder.
-* `LicenseEngine` can now take an optional bundle to look for a `LicenseKit.license` file.
-
-
-
-## 1.3
-
-### ✨ New Features
-
-* `License` has a new, static `current(in:)` function.
-* `LicenseServiceType` has a new `encryptedLicenseFile` service type.
-
-### 💻 macOS Preview Apps
-
-* `LicenseFileDecryptorApp` is a new preview app that can decrypt encrypted files.
-* `LicenseManagerApp` is a new preview app that can list & manage licenses & services.
-
-
-
-## 1.2.4
-
-This version replaces 1.2.1 - 1.2.3 due to git and SPM problems.
-
-This version removes `LicenseStore.shared` and adds a public `LicenseStore` initializer instead.
-
-This version is also released as a multiplatform build. 
-
-
-
-## 1.2
-
-### ✨ New Features
-
-* `License` has a new, static validication function.
-* `LicenseStore` is a new way to store a single license.
-* `LicenseEngine` can now be created with a license store.
-
-### 💡 Adjustments
-
-* `License.ValidationError` has renamed multiple error types.
- 
-
-
-## 1.1
-
-### ✨ New Features
-
-* `License` has a new `renewalDate` property.
-* `License.Customer` has a new `fullName` property.
-
-### 💡 Adjustments
-
-* `License.allowsExpiration` is now `false` by default.
- 
-
-
-## 1.0.2
-
-### 💡 Adjustments
-
-* `License.allowsExpiration` is now `false` by default.
- 
-
-
-## 1.0.1
-
-### ✨ New Features
-
-* `License` has new matching and sorting functionality.
- 
-
-
-## 1.0
-
-This version bumps to Swift 6 and removes all previously deprecated code.
-
-### ✨ New Features
-
-* `License` has new expiration properties.
-* `License` and all subtypes now implement `Hashable` and `Sendable`.
+* `License.allowsExpiration` has been removed.
+* `License.allowsExpirationInProduction` has been removed.
