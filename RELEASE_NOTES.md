@@ -11,6 +11,12 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.0.1
+
+This version adds some customer information that is needed by other products.
+
+
+
 ## 2.0
 
 This version changes the license model, and removes unwanted types.

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A913F7932D9B53C70096DFA5 /* LicenseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A913F7922D9B53C70096DFA5 /* LicenseKit */; };
 		A954FE0327B64722003F7180 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954FE0227B64722003F7180 /* DemoApp.swift */; };
 		A954FE0727B64722003F7180 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A954FE0627B64722003F7180 /* Assets.xcassets */; };
 		A954FE0A27B64722003F7180 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A954FE0927B64722003F7180 /* Preview Assets.xcassets */; };
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				A95DFBCC27B6AE9A005580F2 /* DemoPackage in Frameworks */,
-				A913F7932D9B53C70096DFA5 /* LicenseKit in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -131,7 +129,6 @@
 			name = Demo;
 			packageProductDependencies = (
 				A95DFBCB27B6AE9A005580F2 /* DemoPackage */,
-				A913F7922D9B53C70096DFA5 /* LicenseKit */,
 			);
 			productName = Demo;
 			productReference = A954FDFF27B64722003F7180 /* Demo.app */;
@@ -162,7 +159,6 @@
 			);
 			mainGroup = A954FDF627B64722003F7180;
 			packageReferences = (
-				A913F7912D9B53C70096DFA5 /* XCRemoteSwiftPackageReference "LicenseKit" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = A954FE0027B64722003F7180 /* Products */;
@@ -404,23 +400,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A913F7912D9B53C70096DFA5 /* XCRemoteSwiftPackageReference "LicenseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LicenseKit/LicenseKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		A913F7922D9B53C70096DFA5 /* LicenseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A913F7912D9B53C70096DFA5 /* XCRemoteSwiftPackageReference "LicenseKit" */;
-			productName = LicenseKit;
-		};
 		A95DFBCB27B6AE9A005580F2 /* DemoPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DemoPackage;
