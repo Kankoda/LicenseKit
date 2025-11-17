@@ -26,7 +26,7 @@ public final class DemoPackage {
         let licenseEngine = try await LicenseEngine(
             licenseKey: DemoPackage.productLicenseKey,
             licenseStore: LicenseStore.demo
-        ) {
+        ) { _ in
             licenseService(for: source)
         }
         
@@ -68,9 +68,9 @@ private extension DemoPackage {
                 licenses: [.packageLicense(method: "local")]
             )
 
-        /// File licenses are set in `Resources/licenses.txt`.
+        /// CSV licenses are set in `Resources/licenses.txt`.
         case .file:
-            return .fileName(
+            return .csvFile(
                 fileName: "licenses",
                 fileExtension: "txt",
                 bundle: .demoPackage,

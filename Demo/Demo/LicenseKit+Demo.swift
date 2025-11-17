@@ -28,7 +28,7 @@ extension LicenseEngine {
     /// a SwiftUI view.
     static func createAppSpecificEngine() async throws -> sending LicenseEngine {
         let licenseKey = await DemoApp.appLicenseKey
-        return try await LicenseEngine(licenseKey: DemoApp.productLicenseKey) {
+        return try await LicenseEngine(licenseKey: DemoApp.productLicenseKey) { _ in
             .binary(licenses: [
                 .init(
                     licenseKey: licenseKey,
