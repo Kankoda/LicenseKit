@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/github/v/release/LicenseKit/LicenseKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
     <a href="https://kankoda.github.io/LicenseKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
-    <img src="https://img.shields.io/badge/license-commercial-yellow.svg" alt="Documentation" />
+    <a href="https://kankoda.com/licensekit"><img src="https://img.shields.io/badge/license-commercial-yellow.svg" alt="License" /></a>
 </p>
 
 
