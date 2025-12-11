@@ -37,7 +37,7 @@ extension LicenseEngine {
                     expirationDate: Date().addingTimeInterval(3600),
                     allowsExpiration: false,
                     platforms: [.iOS],
-                    additionalInfo: ["source" : License.Source.binary.id]
+                    additionalInfo: ["source": License.Source.binary.id]
                 )
             ])
         }

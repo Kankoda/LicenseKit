@@ -33,7 +33,7 @@ extension License {
             allowsExpiration: false,
             bundleIds: ["com.licensekit.demo"],
             platforms: .all,
-            additionalInfo: ["registration-method" : method]
+            additionalInfo: ["registration-method": method]
         )
     }
 }
@@ -46,5 +46,6 @@ extension License.Customer {
         contact: "Daniel Saidi",
         address: "Stockholm, Sweden",
         email: "daniel.saidi@gmail.com",
-        website: "https://kankoda.com")
+        website: "https://kankoda.com"
+    )
 }

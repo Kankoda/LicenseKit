@@ -13,11 +13,12 @@ let package = Package(
     products: [
         .library(
             name: "DemoPackage",
-            targets: ["DemoPackage"]),
+            targets: ["DemoPackage"]
+        )
     ],
     dependencies: [
-        //.package(name: "LicenseKit", path: "../../"),
-        //.package(name: "LicenseKit", path: "../../licensekitsource"),
+        // .package(name: "LicenseKit", path: "../../"),
+        // .package(name: "LicenseKit", path: "../../licensekitsource"),
         .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "2.0.1"))
     ],
     targets: [
@@ -28,6 +29,7 @@ let package = Package(
         ),
         .testTarget(
             name: "DemoPackageTests",
-            dependencies: ["DemoPackage"]),
+            dependencies: ["DemoPackage"]
+        )
     ]
 )
