@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/github/v/release/LicenseKit/LicenseKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
     <a href="https://kankoda.github.io/LicenseKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
-    <a href="https://kankoda.com/licensekit"><img src="https://img.shields.io/badge/license-commercial-yellow.svg" alt="License" /></a>
+    <a href="https://kankoda.com/licensekit"><img src="https://img.shields.io/badge/license-commercial-yellow.svg" alt="Pricing" /></a>
 </p>
 
 
@@ -109,14 +109,14 @@ The demo app lets you try out the library on iOS and macOS. Just open and run th
 
 ## Contact
 
-LicenseKit is handled by Kankoda:
+LicenseKit is property of Kankoda:
 
 * [E-mail][Email]
 * [Website][Website]
 * [Bluesky][Bluesky]
 * [Mastodon][Mastodon]
 
-Reach out if you have any questions or need help any way.
+Reach out if you have any questions, want to sign up for a license, or need help in any way.
 
 
 
