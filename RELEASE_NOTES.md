@@ -11,6 +11,31 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.1
+
+This version adds more app-related types, and exposes license types at the root level.
+
+### ✨ Features
+
+* `LicenseApp` is a new namespace with app-specific views.
+* `LicenseApp.LicenseFileDecryptionScreen` is a new view that can decrypt license files.
+* `LicenseApp.LicenseKeyGeneratorScreen` is a new view that can generate license keys.
+* `LicenseApp.LicenseInfoRow` is a new view that can show license info.
+* `LicenseApp.LicenseInfoSection` is a new view that can list license info.
+* `LicenseApp.LicenseInfoView` is a new view that can list all license info.
+* `LicenseApp.LicenseServiceScreen` is a new view that can search for licenses.
+* `LicenseManagerApp` does not compile on all platforms.
+
+### 💡 Updates
+
+* `LicenseServiceType` now implements `Sendable`.
+
+### 🗑️ Deprecations
+
+* `LicenseServiceType/encryptedFile` has been renamed to `licenseFile`.
+
+
+
 ## 2.0.1
 
 This version adds some customer information that is needed by other products.
