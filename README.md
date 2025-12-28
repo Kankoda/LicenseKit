@@ -35,6 +35,10 @@ https://github.com/Kankoda/LicenseKit.git
 
 LicenseKit only has to be linked to the main target. If you use LicenseKit with a Swift package, make sure to set up your package as described in the [online documentation][Documentation].
 
+> [!NOTE]
+> Starting with LicenseKit 2.1, each release will include a multiplatform build. The tag name for a multiplatform release is the version number followed by `-multiplatform`. If this proves successful, the multiplatform build will replace the iOS exclusive one in a future update.
+
+
 
 
 ## Getting started
