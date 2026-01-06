@@ -11,6 +11,12 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.1.1
+
+This version builds the SDK with macOS 15 and Xcode 16.4.
+
+
+
 ## 2.1
 
 This version adds more app-related types, and exposes license types at the root level.
