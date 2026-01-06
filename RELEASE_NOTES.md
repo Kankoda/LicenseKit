@@ -11,6 +11,12 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.1.2
+
+This version builds the SDK with adjusted deployment targets.
+
+
+
 ## 2.1.1
 
 This version builds the SDK with macOS 15 and Xcode 16.4.
