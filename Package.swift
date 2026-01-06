@@ -20,8 +20,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LicenseKit",
-            url: "https://github.com/Kankoda/LicenseKit-Binaries/releases/download/2.1.2/LicenseKit.zip",
-            checksum: "3c343560d6a15a6c0ebdfcede1cf137ee002f58e17ec1a33de08b50bba1d994d"
+            url: "https://github.com/Kankoda/LicenseKit-Binaries/releases/download/2.1.2/LicenseKit-multiplatform.zip",
+            checksum: "a1a73c968d9d49d5e1b7063354b55b6ff750644c74e7d65c98cabf8a86f2cf44"
         )
     ]
 )
