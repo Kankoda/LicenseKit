@@ -18,7 +18,7 @@ public final class DemoPackage {
     /// up the library and unlock its features.
     public static func setup(
         withLicenseKey customerLicenseKey: String,
-        source: License.Source
+        source: LicenseSource
     ) async throws -> License {
 
         // Try to create a license engine with a license key
@@ -58,7 +58,7 @@ private extension DemoPackage {
 
     /// Create a license service for the provided source.
     static func licenseService(
-        for source: License.Source
+        for source: LicenseSource
     ) -> LicenseServiceType {
         switch source {
 

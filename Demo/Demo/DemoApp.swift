@@ -17,7 +17,7 @@ struct DemoApp: App {
     private var context = DemoContext()
 
     // This sets how the DemoPackage should get app licenses.
-    private let packageLicenseSource = License.Source.binary
+    private let packageLicenseSource = LicenseSource.binary
 
     var body: some Scene {
         WindowGroup {

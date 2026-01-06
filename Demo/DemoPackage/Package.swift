@@ -5,10 +5,11 @@ import PackageDescription
 let package = Package(
     name: "DemoPackage",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v13),
-        .tvOS(.v15),
-        .watchOS(.v8)
+        .iOS(.v16),
+        .macOS(.v14),
+        .tvOS(.v16),
+        .watchOS(.v10),
+        .visionOS(.v1)
     ],
     products: [
         .library(
@@ -19,7 +20,8 @@ let package = Package(
     dependencies: [
         // .package(name: "LicenseKit", path: "../../"),
         // .package(name: "LicenseKit", path: "../../licensekitsource"),
-        .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "2.0.1"))
+        // .package(url: "https://github.com/LicenseKit/LicenseKit", .upToNextMajor(from: "2.1.2"))
+        .package(url: "https://github.com/LicenseKit/LicenseKit", branch: "2.1.2-multiplatform")
     ],
     targets: [
         .target(

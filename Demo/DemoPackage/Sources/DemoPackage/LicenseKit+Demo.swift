@@ -38,7 +38,7 @@ extension License {
     }
 }
 
-extension License.Customer {
+extension LicenseCustomer {
 
     /// This license customer is added to the demo license.
     static let packageLicenseCustomer = Self(
