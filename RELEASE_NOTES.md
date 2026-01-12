@@ -11,6 +11,12 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.1.3
+
+This version improves the license bundle validation.
+
+
+
 ## 2.1.2
 
 This version builds the SDK with adjusted deployment targets.
