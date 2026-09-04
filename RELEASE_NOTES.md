@@ -11,6 +11,20 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.2
+
+This version converts the package to a static framework.
+
+### 📦 Package
+
+* `LicenseKit` is now shipped as a static framework.
+
+### 🗑️ Deprecations
+
+* `License.ValidationError` has been renamed back to `LicenseError`.
+
+
+
 ## 2.1.3
 
 This version improves the license bundle validation.
