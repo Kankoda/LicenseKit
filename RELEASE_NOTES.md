@@ -11,6 +11,18 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.2.1
+
+This version reverts the package back to a dynamic framework to fix SwiftUI previews.
+
+If this works (given that the build scripts are new) the static fix will have to wait until the next major update.
+
+### 📦 Package
+
+* `LicenseKit` is once again shipped as a dynamic framework.
+
+
+
 ## 2.2
 
 This version converts the package to a static framework.
