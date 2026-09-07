@@ -11,9 +11,11 @@ These release notes cover the current major version. See older versions for olde
 
 
 
-## 2.2.2
+## 2.2.2, 2.2.3
 
-This version adjusts the dynamic framework for macOS.
+These version adjust the dynamic framework build, which has been remade to not require a package project.
+
+We will patch this as we're discovering edge cases in various linking scenarios.
 
 
 
