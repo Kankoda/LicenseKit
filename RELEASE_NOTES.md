@@ -11,6 +11,12 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.2.2
+
+This version adjusts the dynamic framework for macOS.
+
+
+
 ## 2.2.1
 
 This version reverts the package back to a dynamic framework to fix SwiftUI previews.
