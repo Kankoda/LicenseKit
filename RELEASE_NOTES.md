@@ -11,11 +11,13 @@ These release notes cover the current major version. See older versions for olde
 
 
 
-## 2.2.2, 2.2.3
+## 2.2.0 - 2.2.x
 
-These version adjust the dynamic framework build, which has been remade to not require a package project.
+LicenseKit 2.2.0-2.2.x adjust the XCFramework build process, which has been remade to not require a package project. We will patch this as we're discovering edge cases in various linking scenarios.
 
-We will patch this as we're discovering edge cases in various linking scenarios.
+This results in cleaner builds without a build project, and updated workflows. The XCFramework includes dSyms, which we hope will make app submits easier, at the cost of a slightly larger download.
+
+We still publish a zip with the dSyms, in case you need them.
 
 
 
