@@ -11,6 +11,24 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.3
+
+This version adds a max age to cached license services, to avoid unnecessary license validations.
+
+### ✨ Features
+
+* `LicenseServiceType.cached` has a new `maxAge` parameter that returns cached licenses without validation.
+
+### 🐛 Bug fixes
+
+* Cached services now handle cached license better and rethrow any `LicenseError`, as documented.
+
+### 💥 Breaking Changes
+
+* `LicenseServiceType.api` and `.gumroad` no longer has a cached parameter. Wrap them in `.cached(...)` instead.
+
+
+
 ## 2.2.0 - 2.2.x
 
 LicenseKit 2.2.0-2.2.x adjust the XCFramework build process, which has been remade to not require a package project. We will patch this as we're discovering edge cases in various linking scenarios.
