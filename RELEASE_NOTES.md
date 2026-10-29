@@ -11,6 +11,18 @@ These release notes cover the current major version. See older versions for olde
 
 
 
+## 2.4
+
+This version adds a max age to cached license services, to avoid unnecessary license validations.
+
+### ✨ Features
+
+* `License.validate` has a new `isSwiftUIPreviewAllowed` parameter.
+* `LicenseRegistrationView` is a new view that registers a license before drawing the content. 
+* `LicenseValidationView` is a new view that validates a license before drawing the content. 
+
+
+
 ## 2.3
 
 This version adds a max age to cached license services, to avoid unnecessary license validations.
