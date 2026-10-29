@@ -13,7 +13,7 @@ These release notes cover the current major version. See older versions for olde
 
 ## 2.4
 
-This version adds a max age to cached license services, to avoid unnecessary license validations.
+This version adds new license registration and validation views.
 
 ### ✨ Features
 
